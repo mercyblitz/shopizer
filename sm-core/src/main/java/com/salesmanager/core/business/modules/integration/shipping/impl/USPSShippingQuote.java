@@ -1,6 +1,5 @@
 package com.salesmanager.core.business.modules.integration.shipping.impl;
 
-import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 import java.math.BigDecimal;
@@ -17,7 +16,6 @@ import javax.inject.Inject;
 import org.apache.commons.digester.Digester;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;

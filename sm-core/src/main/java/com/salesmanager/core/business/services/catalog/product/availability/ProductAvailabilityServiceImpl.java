@@ -16,7 +16,6 @@ import com.salesmanager.core.business.exception.ServiceException;
 import com.salesmanager.core.business.repositories.catalog.product.availability.PageableProductAvailabilityRepository;
 import com.salesmanager.core.business.repositories.catalog.product.availability.ProductAvailabilityRepository;
 import com.salesmanager.core.business.services.common.generic.SalesManagerEntityServiceImpl;
-import com.salesmanager.core.model.catalog.product.Product;
 import com.salesmanager.core.model.catalog.product.availability.ProductAvailability;
 import com.salesmanager.core.model.merchant.MerchantStore;
 

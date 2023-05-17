@@ -1,8 +1,6 @@
 package com.salesmanager.shop.mapper.catalog;
 
-import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 

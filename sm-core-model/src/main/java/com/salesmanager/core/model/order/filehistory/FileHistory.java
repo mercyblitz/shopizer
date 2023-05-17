@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
 import com.salesmanager.core.model.merchant.MerchantStore;
-import com.salesmanager.core.utils.CloneUtils;
+import com.salesmanager.core.util.CloneUtils;
 
 @Entity
 @Table (name="FILE_HISTORY", uniqueConstraints={

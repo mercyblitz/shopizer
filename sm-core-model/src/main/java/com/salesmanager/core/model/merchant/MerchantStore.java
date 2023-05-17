@@ -38,7 +38,7 @@ import com.salesmanager.core.model.reference.country.Country;
 import com.salesmanager.core.model.reference.currency.Currency;
 import com.salesmanager.core.model.reference.language.Language;
 import com.salesmanager.core.model.reference.zone.Zone;
-import com.salesmanager.core.utils.CloneUtils;
+import com.salesmanager.core.util.CloneUtils;
 
 @Entity
 @Table(name = "MERCHANT_STORE",

@@ -16,9 +16,8 @@ import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.salesmanager.core.constants.SchemaConstant;
 import com.salesmanager.core.model.order.orderproduct.OrderProduct;
-import com.salesmanager.core.utils.CloneUtils;
+import com.salesmanager.core.util.CloneUtils;
 
 @Entity
 @Table (name="ORDER_ACCOUNT_PRODUCT" )

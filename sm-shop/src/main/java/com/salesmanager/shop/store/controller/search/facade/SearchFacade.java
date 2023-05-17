@@ -4,12 +4,10 @@ import java.util.List;
 
 import com.salesmanager.core.model.merchant.MerchantStore;
 import com.salesmanager.core.model.reference.language.Language;
-import com.salesmanager.shop.model.catalog.SearchProductList;
 import com.salesmanager.shop.model.catalog.SearchProductRequest;
 import com.salesmanager.shop.model.entity.ValueList;
 
 import modules.commons.search.request.SearchItem;
-import modules.commons.search.request.SearchResponse;
 
 /**
  * Different services for searching and indexing data

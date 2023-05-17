@@ -9,7 +9,7 @@ import javax.persistence.TemporalType;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.salesmanager.core.utils.CloneUtils;
+import com.salesmanager.core.util.CloneUtils;
 
 
 @Embeddable

@@ -39,7 +39,7 @@ import com.salesmanager.core.model.order.orderstatus.OrderStatusHistory;
 import com.salesmanager.core.model.order.payment.CreditCard;
 import com.salesmanager.core.model.payments.PaymentType;
 import com.salesmanager.core.model.reference.currency.Currency;
-import com.salesmanager.core.utils.CloneUtils;
+import com.salesmanager.core.util.CloneUtils;
 
 @Entity
 @Table (name="ORDERS")

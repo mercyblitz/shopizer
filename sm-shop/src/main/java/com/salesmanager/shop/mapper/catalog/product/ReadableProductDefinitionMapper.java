@@ -32,7 +32,7 @@ import com.salesmanager.shop.model.catalog.product.product.ProductSpecification;
 import com.salesmanager.shop.model.catalog.product.product.definition.ReadableProductDefinition;
 import com.salesmanager.shop.model.catalog.product.product.definition.ReadableProductDefinitionFull;
 import com.salesmanager.shop.model.catalog.product.type.ReadableProductType;
-import com.salesmanager.shop.model.references.DimensionUnitOfMeasure;
+import com.salesmanager.core.util.DimensionUnitOfMeasure;
 import com.salesmanager.shop.model.references.WeightUnitOfMeasure;
 import com.salesmanager.shop.utils.DateUtil;
 import com.salesmanager.shop.utils.ImageFilePath;

@@ -25,7 +25,7 @@ import com.salesmanager.core.model.reference.language.Language;
 import com.salesmanager.core.model.reference.zone.Zone;
 import com.salesmanager.shop.model.content.ReadableImage;
 import com.salesmanager.shop.model.entity.ReadableAudit;
-import com.salesmanager.shop.model.references.MeasureUnit;
+import com.salesmanager.core.util.MeasureUnit;
 import com.salesmanager.shop.model.references.ReadableAddress;
 import com.salesmanager.shop.model.references.ReadableLanguage;
 import com.salesmanager.shop.model.references.WeightUnit;

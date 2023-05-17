@@ -20,9 +20,8 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.Type;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.salesmanager.core.constants.SchemaConstant;
 import com.salesmanager.core.model.order.Order;
-import com.salesmanager.core.utils.CloneUtils;
+import com.salesmanager.core.util.CloneUtils;
 
 @Entity
 @Table (name="ORDER_STATUS_HISTORY" )

@@ -1,16 +1,6 @@
 package com.salesmanager.shop.populator.customer;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.salesmanager.core.business.exception.ConversionException;
-import com.salesmanager.core.business.utils.AbstractDataPopulator;
-import com.salesmanager.core.model.customer.attribute.CustomerOptionSet;
-import com.salesmanager.core.model.merchant.MerchantStore;
-import com.salesmanager.core.model.reference.language.Language;
-import com.salesmanager.shop.model.customer.attribute.CustomerOption;
-import com.salesmanager.shop.model.customer.attribute.CustomerOptionValue;
-
 
 
 public class ReadableCustomerOptionPopulator {

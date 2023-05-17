@@ -21,7 +21,6 @@ import com.salesmanager.core.model.order.attributes.OrderAttribute;
 import com.salesmanager.core.model.reference.language.Language;
 import com.salesmanager.shop.model.customer.ReadableBilling;
 import com.salesmanager.shop.model.customer.ReadableDelivery;
-import com.salesmanager.shop.model.customer.address.Address;
 import com.salesmanager.shop.model.order.v0.ReadableOrder;
 import com.salesmanager.shop.model.store.ReadableMerchantStore;
 

@@ -1,5 +1,7 @@
 package com.salesmanager.shop.model.references;
 
+import com.salesmanager.core.util.MeasureUnit;
+
 import java.util.List;
 
 public class SizeReferences {

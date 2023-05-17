@@ -1,11 +1,10 @@
 package com.salesmanager.shop.model.store;
 
-import java.io.Serializable;
+import com.salesmanager.core.util.MeasureUnit;
+import com.salesmanager.shop.model.references.WeightUnit;
 
 import javax.validation.constraints.NotNull;
-
-import com.salesmanager.shop.model.references.MeasureUnit;
-import com.salesmanager.shop.model.references.WeightUnit;
+import java.io.Serializable;
 
 public class MerchantStoreEntity implements Serializable {
 	

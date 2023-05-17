@@ -30,7 +30,6 @@ import com.salesmanager.core.model.catalog.product.attribute.ProductOptionDescri
 import com.salesmanager.core.model.catalog.product.attribute.ProductOptionValueDescription;
 import com.salesmanager.core.model.merchant.MerchantStore;
 import com.salesmanager.core.model.reference.language.Language;
-import com.salesmanager.shop.mapper.Mapper;
 import com.salesmanager.shop.mapper.catalog.ReadableCategoryMapper;
 import com.salesmanager.shop.model.catalog.category.PersistableCategory;
 import com.salesmanager.shop.model.catalog.category.ReadableCategory;

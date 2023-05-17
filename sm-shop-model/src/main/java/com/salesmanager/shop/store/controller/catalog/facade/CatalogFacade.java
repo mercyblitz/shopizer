@@ -3,7 +3,6 @@ package com.salesmanager.shop.store.controller.catalog.facade;
 import com.salesmanager.core.model.catalog.catalog.Catalog;
 import com.salesmanager.core.model.merchant.MerchantStore;
 import com.salesmanager.core.model.reference.language.Language;
-import com.salesmanager.shop.model.catalog.catalog.*;
 import com.salesmanager.shop.model.entity.ReadableEntityList;
 
 import java.util.Optional;

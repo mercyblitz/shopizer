@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.salesmanager.core.model.merchant.MerchantStore;
 import com.salesmanager.core.model.reference.currency.Currency;
 import com.salesmanager.core.model.reference.language.Language;
-import com.salesmanager.shop.model.references.MeasureUnit;
+import com.salesmanager.core.util.MeasureUnit;
 import com.salesmanager.shop.model.references.ReadableCountry;
 import com.salesmanager.shop.model.references.ReadableZone;
 import com.salesmanager.shop.model.references.SizeReferences;
