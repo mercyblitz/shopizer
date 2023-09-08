@@ -1,5 +1,0 @@
-org.springframework.boot.env.EnvironmentPostProcessor=\
-com.acme.spring.boot.env.sentinel.SentinelConfigEnvironmentPostProcessor
-
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.acme.spring.boot.actuator.micrometer.MicrometerAutoConfiguration
