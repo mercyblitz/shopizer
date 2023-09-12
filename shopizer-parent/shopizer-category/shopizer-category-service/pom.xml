@@ -14,6 +14,26 @@
 
     <dependencies>
 
+        <!-- Shopizer -->
+        <dependency>
+            <groupId>com.shopizer</groupId>
+            <artifactId>shopizer-category-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.shopizer</groupId>
+            <artifactId>shopizer-user-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Shopizer Commons Service -->
+        <dependency>
+            <groupId>com.shopizer</groupId>
+            <artifactId>shopizer-commons-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!-- Java Common Annotations -->
         <dependency>
             <groupId>javax.annotation</groupId>
@@ -24,20 +44,6 @@
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>javax.persistence-api</artifactId>
-        </dependency>
-
-        <!-- Shopizer -->
-        <dependency>
-            <groupId>com.shopizer</groupId>
-            <artifactId>shopizer-category-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <!-- Shopizer Commons Service -->
-        <dependency>
-            <groupId>com.shopizer</groupId>
-            <artifactId>shopizer-commons-service</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <!-- Hibernate -->

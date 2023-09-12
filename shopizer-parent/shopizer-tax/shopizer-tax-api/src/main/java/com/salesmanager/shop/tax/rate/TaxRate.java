@@ -1,9 +1,9 @@
 /*
- * Licensed to csti consulting 
+ * Licensed to csti consulting
  * You may obtain a copy of the License at
  *
  * http://www.csticonsulting.com
- * Copyright (c) 2006-Aug 24, 2010 Consultation CS-TI inc. 
+ * Copyright (c) 2006-Aug 24, 2010 Consultation CS-TI inc.
  *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
@@ -15,14 +15,13 @@
 package com.salesmanager.shop.tax.rate;
 
 
-import com.salesmanager.shop.commons.entity.reference.country.Country;
-import com.salesmanager.shop.commons.entity.generic.SalesManagerEntity;
-import com.salesmanager.shop.commons.entity.merchant.MerchantStore;
-import com.salesmanager.shop.commons.entity.reference.zone.Zone;
 import com.salesmanager.shop.commons.entity.common.audit.AuditListener;
 import com.salesmanager.shop.commons.entity.common.audit.AuditSection;
 import com.salesmanager.shop.commons.entity.common.audit.Auditable;
-import com.salesmanager.shop.product.entity.tax.TaxClass;
+import com.salesmanager.shop.commons.entity.generic.SalesManagerEntity;
+import com.salesmanager.shop.commons.entity.merchant.MerchantStore;
+import com.salesmanager.shop.commons.entity.reference.country.Country;
+import com.salesmanager.shop.commons.entity.reference.zone.Zone;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -49,200 +48,209 @@ import java.util.List;
 
 @Entity
 @EntityListeners(value = AuditListener.class)
-@Table(name = "TAX_RATE" , uniqueConstraints={
-		@UniqueConstraint(columnNames={
-				"TAX_CODE",
-				"MERCHANT_ID"
-			})
-		}
-	)
-public class TaxRate  extends SalesManagerEntity<Long, TaxRate> implements Auditable {
-	private static final long serialVersionUID = 3356827741612925066L;
-	
-	@Id
-	@Column(name = "TAX_RATE_ID")
-	@TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "TAX_RATE_ID_NEXT_VALUE")
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
-	private Long id;
-	
-	@Embedded
-	private AuditSection auditSection = new AuditSection();
-	
-	@Column(name = "TAX_PRIORITY")
-	private Integer taxPriority = 0;
-	
-	@Column(name = "TAX_RATE" , nullable= false , precision=7, scale=4)
-	private BigDecimal taxRate;
-	
-	@NotEmpty
-	@Column(name = "TAX_CODE")
-	private String code;
-	
+@Table(name = "TAX_RATE", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {
+                "TAX_CODE",
+                "MERCHANT_ID"
+        })
+}
+)
+public class TaxRate extends SalesManagerEntity<Long, TaxRate> implements Auditable {
+    private static final long serialVersionUID = 3356827741612925066L;
 
-	@Column(name = "PIGGYBACK")
-	private boolean piggyback;
-	
-	@ManyToOne
-	@JoinColumn(name = "TAX_CLASS_ID" , nullable=false)
-	private TaxClass taxClass;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="MERCHANT_ID", nullable=false)
-	private MerchantStore merchantStore;
-	
-	@Valid
-	@OneToMany(mappedBy = "taxRate", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<TaxRateDescription> descriptions = new ArrayList<TaxRateDescription>();
-	
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Country.class)
-	@JoinColumn(name="COUNTRY_ID", nullable=false, updatable=true)
-	private Country country;
+    @Id
+    @Column(name = "TAX_RATE_ID")
+    @TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "TAX_RATE_ID_NEXT_VALUE")
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
+    private Long id;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="ZONE_ID", nullable=true, updatable=true)
-	private Zone zone;
+    @Embedded
+    private AuditSection auditSection = new AuditSection();
 
-	@Column(name = "STORE_STATE_PROV", length=100)
-	private String stateProvince;
-	
-	@ManyToOne
-	@JoinColumn(name = "PARENT_ID")
-	private TaxRate parent;
-	
-	@OneToMany(mappedBy = "parent", cascade = CascadeType.REMOVE, orphanRemoval = true)
-	private List<TaxRate> taxRates = new ArrayList<TaxRate>();
-	
-	@Transient
-	private String rateText;
-	
-	
-	public String getRateText() {
-		return rateText;
-	}
+    @Column(name = "TAX_PRIORITY")
+    private Integer taxPriority = 0;
 
-	public void setRateText(String rateText) {
-		this.rateText = rateText;
-	}
+    @Column(name = "TAX_RATE", nullable = false, precision = 7, scale = 4)
+    private BigDecimal taxRate;
 
-	public TaxRate() {
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
-	@Override
-	public AuditSection getAuditSection() {
-		return auditSection;
-	}
-	
-	@Override
-	public void setAuditSection(AuditSection auditSection) {
-		this.auditSection = auditSection;
-	}
-
-	public Integer getTaxPriority() {
-		return taxPriority;
-	}
-
-	public void setTaxPriority(Integer taxPriority) {
-		this.taxPriority = taxPriority;
-	}
-
-	public BigDecimal getTaxRate() {
-		return taxRate;
-	}
-
-	public void setTaxRate(BigDecimal taxRate) {
-		this.taxRate = taxRate;
-	}
-
-	public boolean isPiggyback() {
-		return piggyback;
-	}
-
-	public void setPiggyback(boolean piggyback) {
-		this.piggyback = piggyback;
-	}
-
-	public TaxClass getTaxClass() {
-		return taxClass;
-	}
-
-	public void setTaxClass(TaxClass taxClass) {
-		this.taxClass = taxClass;
-	}
+    @NotEmpty
+    @Column(name = "TAX_CODE")
+    private String code;
 
 
+    @Column(name = "PIGGYBACK")
+    private boolean piggyback;
 
-	public List<TaxRateDescription> getDescriptions() {
-		return descriptions;
-	}
+//    @ManyToOne
+//    @JoinColumn(name = "TAX_CLASS_ID", nullable = false)
+//    private TaxClass taxClass;
 
-	public void setDescriptions(List<TaxRateDescription> descriptions) {
-		this.descriptions = descriptions;
-	}
+    @Column(name = "TAX_CLASS_ID", nullable = false)
+    private Long taxClassId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MERCHANT_ID", nullable = false)
+    private MerchantStore merchantStore;
+
+    @Valid
+    @OneToMany(mappedBy = "taxRate", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<TaxRateDescription> descriptions = new ArrayList<TaxRateDescription>();
+
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Country.class)
+    @JoinColumn(name = "COUNTRY_ID", nullable = false, updatable = true)
+    private Country country;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ZONE_ID", nullable = true, updatable = true)
+    private Zone zone;
+
+    @Column(name = "STORE_STATE_PROV", length = 100)
+    private String stateProvince;
+
+    @ManyToOne
+    @JoinColumn(name = "PARENT_ID")
+    private TaxRate parent;
+
+    @OneToMany(mappedBy = "parent", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<TaxRate> taxRates = new ArrayList<TaxRate>();
+
+    @Transient
+    private String rateText;
 
 
+    public String getRateText() {
+        return rateText;
+    }
 
-	public MerchantStore getMerchantStore() {
-		return merchantStore;
-	}
+    public void setRateText(String rateText) {
+        this.rateText = rateText;
+    }
 
-	public void setMerchantStore(MerchantStore merchantStore) {
-		this.merchantStore = merchantStore;
-	}
+    public TaxRate() {
+    }
 
-	public void setCountry(Country country) {
-		this.country = country;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public Country getCountry() {
-		return country;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setZone(Zone zone) {
-		this.zone = zone;
-	}
+    @Override
+    public AuditSection getAuditSection() {
+        return auditSection;
+    }
 
-	public Zone getZone() {
-		return zone;
-	}
+    @Override
+    public void setAuditSection(AuditSection auditSection) {
+        this.auditSection = auditSection;
+    }
+
+    public Integer getTaxPriority() {
+        return taxPriority;
+    }
+
+    public void setTaxPriority(Integer taxPriority) {
+        this.taxPriority = taxPriority;
+    }
+
+    public BigDecimal getTaxRate() {
+        return taxRate;
+    }
+
+    public void setTaxRate(BigDecimal taxRate) {
+        this.taxRate = taxRate;
+    }
+
+    public boolean isPiggyback() {
+        return piggyback;
+    }
+
+    public void setPiggyback(boolean piggyback) {
+        this.piggyback = piggyback;
+    }
+
+//    public TaxClass getTaxClass() {
+//        return taxClass;
+//    }
+//
+//    public void setTaxClass(TaxClass taxClass) {
+//        this.taxClass = taxClass;
+//    }
 
 
-	public void setTaxRates(List<TaxRate> taxRates) {
-		this.taxRates = taxRates;
-	}
+    public Long getTaxClassId() {
+        return taxClassId;
+    }
 
-	public List<TaxRate> getTaxRates() {
-		return taxRates;
-	}
+    public void setTaxClassId(Long taxClassId) {
+        this.taxClassId = taxClassId;
+    }
 
-	public void setParent(TaxRate parent) {
-		this.parent = parent;
-	}
+    public List<TaxRateDescription> getDescriptions() {
+        return descriptions;
+    }
 
-	public TaxRate getParent() {
-		return parent;
-	}
+    public void setDescriptions(List<TaxRateDescription> descriptions) {
+        this.descriptions = descriptions;
+    }
 
-	public void setStateProvince(String stateProvince) {
-		this.stateProvince = stateProvince;
-	}
 
-	public String getStateProvince() {
-		return stateProvince;
-	}
+    public MerchantStore getMerchantStore() {
+        return merchantStore;
+    }
 
-	public void setCode(String code) {
-		this.code = code;
-	}
+    public void setMerchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
+    }
 
-	public String getCode() {
-		return code;
-	}
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setZone(Zone zone) {
+        this.zone = zone;
+    }
+
+    public Zone getZone() {
+        return zone;
+    }
+
+
+    public void setTaxRates(List<TaxRate> taxRates) {
+        this.taxRates = taxRates;
+    }
+
+    public List<TaxRate> getTaxRates() {
+        return taxRates;
+    }
+
+    public void setParent(TaxRate parent) {
+        this.parent = parent;
+    }
+
+    public TaxRate getParent() {
+        return parent;
+    }
+
+    public void setStateProvince(String stateProvince) {
+        this.stateProvince = stateProvince;
+    }
+
+    public String getStateProvince() {
+        return stateProvince;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getCode() {
+        return code;
+    }
 }

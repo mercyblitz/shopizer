@@ -20,6 +20,12 @@
             <version>${project.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.shopizer</groupId>
+            <artifactId>shopizer-system-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!-- Shopizer Commons Service -->
         <dependency>
             <groupId>com.shopizer</groupId>
@@ -167,6 +173,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
 </project>
