@@ -1,7 +1,7 @@
 package com.salesmanager.shop.shipping.model;
 
 
-import com.salesmanager.shop.commons.entity.country.Country;
+import com.salesmanager.shop.commons.entity.reference.country.Country;
 
 import java.util.List;
 

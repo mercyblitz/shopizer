@@ -1,6 +1,5 @@
 package com.salesmanager.shop.tax;
 
-import com.salesmanager.shop.order.entity.OrderTotalItem;
 import com.salesmanager.shop.tax.rate.TaxRate;
 
 public class TaxItem extends OrderTotalItem {

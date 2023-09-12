@@ -15,7 +15,7 @@
 package com.salesmanager.shop.tax.rate;
 
 import com.salesmanager.shop.commons.constants.SchemaConstant;
-import com.salesmanager.shop.commons.model.description.Description;
+import com.salesmanager.shop.commons.entity.common.description.Description;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;

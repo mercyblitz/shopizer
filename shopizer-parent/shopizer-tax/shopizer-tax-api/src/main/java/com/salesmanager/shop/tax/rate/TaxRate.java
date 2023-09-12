@@ -15,13 +15,13 @@
 package com.salesmanager.shop.tax.rate;
 
 
-import com.salesmanager.shop.commons.entity.country.Country;
+import com.salesmanager.shop.commons.entity.reference.country.Country;
 import com.salesmanager.shop.commons.entity.generic.SalesManagerEntity;
 import com.salesmanager.shop.commons.entity.merchant.MerchantStore;
-import com.salesmanager.shop.commons.entity.zone.Zone;
-import com.salesmanager.shop.commons.model.audit.AuditListener;
-import com.salesmanager.shop.commons.model.audit.AuditSection;
-import com.salesmanager.shop.commons.model.audit.Auditable;
+import com.salesmanager.shop.commons.entity.reference.zone.Zone;
+import com.salesmanager.shop.commons.entity.common.audit.AuditListener;
+import com.salesmanager.shop.commons.entity.common.audit.AuditSection;
+import com.salesmanager.shop.commons.entity.common.audit.Auditable;
 import com.salesmanager.shop.product.entity.tax.TaxClass;
 
 import javax.persistence.CascadeType;
@@ -85,8 +85,6 @@ public class TaxRate  extends SalesManagerEntity<Long, TaxRate> implements Audit
 	@ManyToOne
 	@JoinColumn(name = "TAX_CLASS_ID" , nullable=false)
 	private TaxClass taxClass;
-	
-
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="MERCHANT_ID", nullable=false)
