@@ -107,27 +107,6 @@
     <!--BOM -->
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>com.shopizer</groupId>
-                <artifactId>sm-core</artifactId>
-                <version>3.2.5</version>
-            </dependency>
-            <dependency>
-                <groupId>com.shopizer</groupId>
-                <artifactId>sm-core-model</artifactId>
-                <version>3.2.5</version>
-            </dependency>
-            <dependency>
-                <groupId>com.shopizer</groupId>
-                <artifactId>sm-core-modules</artifactId>
-                <version>3.2.5</version>
-            </dependency>
-            <dependency>
-                <groupId>com.shopizer</groupId>
-                <artifactId>sm-shop-model</artifactId>
-                <version>3.2.5</version>
-            </dependency>
-
             <!-- MyBatis -->
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
@@ -199,14 +178,12 @@
                 <version>${grpc.version}</version>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/javax.inject/javax.inject -->
             <dependency>
                 <groupId>javax.inject</groupId>
                 <artifactId>javax.inject</artifactId>
                 <version>${javax.inject.version}</version>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
@@ -244,14 +221,12 @@
                 <version>${jackson-version}</version>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/javax.mail/mail -->
             <dependency>
                 <groupId>javax.mail</groupId>
                 <artifactId>mail</artifactId>
                 <version>1.4.7</version>
             </dependency>
 
-            <!-- http://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
             <dependency>
                 <groupId>com.googlecode.json-simple</groupId>
                 <artifactId>json-simple</artifactId>
@@ -305,15 +280,12 @@
             </dependency>
             <!-- end rules engine -->
 
-            <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-collections4</artifactId>
                 <version>${commons-collections4.version}</version>
             </dependency>
 
-
-            <!-- https://mvnrepository.com/artifact/commons-validator/commons-validator -->
             <dependency>
                 <groupId>commons-validator</groupId>
                 <artifactId>commons-validator</artifactId>
@@ -327,14 +299,12 @@
                 </exclusions>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3 -->
             <dependency>
                 <groupId>com.amazonaws</groupId>
                 <artifactId>aws-java-sdk-s3</artifactId>
                 <version>1.11.640</version>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-ses -->
             <dependency>
                 <groupId>com.amazonaws</groupId>
                 <artifactId>aws-java-sdk-ses</artifactId>
@@ -378,7 +348,6 @@
                 <version>2.73.0</version>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/com.maxmind.geoip2/geoip2 -->
             <dependency>
                 <groupId>com.maxmind.geoip2</groupId>
                 <artifactId>geoip2</artifactId>
@@ -386,7 +355,6 @@
             </dependency>
 
             <!-- google cloud storage -->
-            <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
             <!-- Up to date for GCP storage issue -->
             <dependency>
                 <groupId>com.google.guava</groupId>
@@ -535,84 +503,22 @@
     <dependencies>
 
         <dependency>
-            <groupId>javax.inject</groupId>
-            <artifactId>javax.inject</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-
-        <!-- Jackson JSON Processor -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/net.sf.ehcache/ehcache -->
-        <dependency>
             <groupId>net.sf.ehcache</groupId>
             <artifactId>ehcache</artifactId>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/javax.mail/javax.mail-api -->
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>javax.mail-api</artifactId>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/javax.mail/mail -->
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
         </dependency>
 
-        <!-- http://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
-        <dependency>
-            <groupId>com.googlecode.json-simple</groupId>
-            <artifactId>json-simple</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>junit</groupId>
-                    <artifactId>junit</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
 
-        <!-- Elastic search TODO replace with starter-->
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-
-        <!-- oracle -->
-        <!-- <dependency> <groupId>com.oracle</groupId> <artifactId>ojdbc8</artifactId>
-            <version>${oracle.version}</version> </dependency> -->
-
-
-        <!-- postgres <dependency> <groupId>org.postgresql</groupId> <artifactId>postgresql</artifactId>
-            </dependency> -->
-
+        <!-- Testing -->
         <dependency>
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>

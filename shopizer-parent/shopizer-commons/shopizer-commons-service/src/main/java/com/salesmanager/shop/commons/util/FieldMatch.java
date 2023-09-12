@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.salesmanager.shop.commons.util;
 
@@ -15,28 +15,27 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 
 /**
- * 
+ *
  * Validation annotation to validate that 2 fields have the same value.
  * An array of fields and their matching confirmation fields can be supplied.
  *
  * Example, compare 1 pair of fields:
  * @FieldMatch(first = "password", second = "confirmPassword", message = "The password fields must match")
- * 
+ *
  * Example, compare more than 1 pair of fields:
  * @FieldMatch.List({
  * @FieldMatch(first = "password", second = "confirmPassword", message = "The password fields must match"),
  * @FieldMatch(first = "email", second = "confirmEmail", message = "The email fields must match")})
- * 
+ *
  * @author Umesh Awasthi
- * 
+ *
  */
 
 @Constraint(validatedBy = FieldMatchValidator.class)
 @Documented
 @Target({TYPE, ANNOTATION_TYPE})
 @Retention(RUNTIME)
-public @interface FieldMatch
-{
+public @interface FieldMatch {
 
     String message() default "Fields are not matching";
 
@@ -62,8 +61,7 @@ public @interface FieldMatch
     @Target({TYPE, ANNOTATION_TYPE})
     @Retention(RUNTIME)
     @Documented
-            @interface List
-    {
+    @interface List {
         FieldMatch[] value();
     }
 }

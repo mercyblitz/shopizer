@@ -1,12 +1,12 @@
 package com.salesmanager.shop.user.entity;
 
+import com.salesmanager.shop.commons.entity.common.CredentialsReset;
+import com.salesmanager.shop.commons.entity.common.audit.AuditListener;
+import com.salesmanager.shop.commons.entity.common.audit.AuditSection;
+import com.salesmanager.shop.commons.entity.common.audit.Auditable;
 import com.salesmanager.shop.commons.entity.generic.SalesManagerEntity;
-import com.salesmanager.shop.commons.entity.language.Language;
 import com.salesmanager.shop.commons.entity.merchant.MerchantStore;
-import com.salesmanager.shop.commons.model.CredentialsReset;
-import com.salesmanager.shop.commons.model.audit.AuditListener;
-import com.salesmanager.shop.commons.model.audit.AuditSection;
-import com.salesmanager.shop.commons.model.audit.Auditable;
+import com.salesmanager.shop.commons.entity.reference.language.Language;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.CascadeType;
@@ -36,299 +36,276 @@ import java.util.List;
 
 /**
  * User management
- * @author carlsamson
  *
+ * @author carlsamson
  */
 @Entity
 @EntityListeners(value = AuditListener.class)
-@Table(name = "USERS", 
-    indexes = { @Index(name="USR_NAME_IDX", columnList = "ADMIN_NAME")},
-	uniqueConstraints=
-	@UniqueConstraint(columnNames = {"MERCHANT_ID", "ADMIN_NAME"}))
+@Table(name = "USERS",
+        indexes = {@Index(name = "USR_NAME_IDX", columnList = "ADMIN_NAME")},
+        uniqueConstraints =
+        @UniqueConstraint(columnNames = {"MERCHANT_ID", "ADMIN_NAME"}))
 public class User extends SalesManagerEntity<Long, User> implements Auditable {
-	
-	
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@Column(name = "USER_ID", unique=true, nullable=false)
-	@TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "USER_SEQ_NEXT_VAL")
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
-	private Long id;
-	
-	public User() {
-		
-	}
-	
-	public User(String userName,String password, String email) {
-		
-		this.adminName = userName;
-		this.adminPassword = password;
-		this.adminEmail = email;
-	}
-	
-	@NotEmpty
-	@Column(name="ADMIN_NAME", length=100)
-	private String adminName;
-	
-	@ManyToMany(fetch=FetchType.LAZY, cascade = {CascadeType.REFRESH})
-	@JoinTable(name = "USER_GROUP", joinColumns = { 
-			@JoinColumn(name = "USER_ID", nullable = false, updatable = false) }
-			, 
-			inverseJoinColumns = { @JoinColumn(name = "GROUP_ID", 
-					nullable = false, updatable = false) }
-	)
-	@Cascade({
-		org.hibernate.annotations.CascadeType.DETACH,
-		org.hibernate.annotations.CascadeType.LOCK,
-		org.hibernate.annotations.CascadeType.REFRESH,
-		org.hibernate.annotations.CascadeType.REPLICATE
-		
-	})
-	private List<Group> groups = new ArrayList<Group>();
-	
-	@NotEmpty
-	@Email
-	@Column(name="ADMIN_EMAIL")
-	private String adminEmail;
-	
-	@NotEmpty
-	@Column(name="ADMIN_PASSWORD", length=60)
-	private String adminPassword;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="MERCHANT_ID", nullable=false)
-	private MerchantStore merchantStore;
-	
-	
-	@Column(name="ADMIN_FIRST_NAME")
-	private String firstName;
-	
-	@Column(name="ACTIVE")
-	private boolean active = true;
-	
-	
-	@Column(name="ADMIN_LAST_NAME")
-	private String lastName;
-	
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Language.class)
-	@JoinColumn(name = "LANGUAGE_ID")
-	private Language defaultLanguage;
-	
-	
-	@Column(name="ADMIN_Q1")
-	private String question1;
-	
-	@Column(name="ADMIN_Q2")
-	private String question2;
-	
-	@Column(name="ADMIN_Q3")
-	private String question3;
-	
-	@Column(name="ADMIN_A1")
-	private String answer1;
-	
-	@Column(name="ADMIN_A2")
-	private String answer2;
-	
-	@Column(name="ADMIN_A3")
-	private String answer3;
-
-	@Embedded
-	private AuditSection auditSection = new AuditSection();
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "LAST_ACCESS")
-	private Date lastAccess;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "LOGIN_ACCESS")
-	private Date loginTime;
-	
-	@Embedded
-	private CredentialsReset credentialsResetRequest = null;
 
 
-	public CredentialsReset getCredentialsResetRequest() {
-		return credentialsResetRequest;
-	}
+    private static final long serialVersionUID = 1L;
 
-	public void setCredentialsResetRequest(CredentialsReset credentialsResetRequest) {
-		this.credentialsResetRequest = credentialsResetRequest;
-	}
+    @Id
+    @Column(name = "USER_ID", unique = true, nullable = false)
+    @TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "USER_SEQ_NEXT_VAL")
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
+    private Long id;
+    @NotEmpty
+    @Column(name = "ADMIN_NAME", length = 100)
+    private String adminName;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
+    @JoinTable(name = "USER_GROUP", joinColumns = {
+            @JoinColumn(name = "USER_ID", nullable = false, updatable = false)}
+            ,
+            inverseJoinColumns = {@JoinColumn(name = "GROUP_ID",
+                    nullable = false, updatable = false)}
+    )
+    @Cascade({
+            org.hibernate.annotations.CascadeType.DETACH,
+            org.hibernate.annotations.CascadeType.LOCK,
+            org.hibernate.annotations.CascadeType.REFRESH,
+            org.hibernate.annotations.CascadeType.REPLICATE
 
-	@Override
-	public Long getId() {
-		return this.id;
-	}
+    })
+    private List<Group> groups = new ArrayList<Group>();
+    @NotEmpty
+    @Email
+    @Column(name = "ADMIN_EMAIL")
+    private String adminEmail;
+    @NotEmpty
+    @Column(name = "ADMIN_PASSWORD", length = 60)
+    private String adminPassword;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MERCHANT_ID", nullable = false)
+    private MerchantStore merchantStore;
+    @Column(name = "ADMIN_FIRST_NAME")
+    private String firstName;
+    @Column(name = "ACTIVE")
+    private boolean active = true;
+    @Column(name = "ADMIN_LAST_NAME")
+    private String lastName;
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Language.class)
+    @JoinColumn(name = "LANGUAGE_ID")
+    private Language defaultLanguage;
+    @Column(name = "ADMIN_Q1")
+    private String question1;
+    @Column(name = "ADMIN_Q2")
+    private String question2;
+    @Column(name = "ADMIN_Q3")
+    private String question3;
+    @Column(name = "ADMIN_A1")
+    private String answer1;
+    @Column(name = "ADMIN_A2")
+    private String answer2;
+    @Column(name = "ADMIN_A3")
+    private String answer3;
+    @Embedded
+    private AuditSection auditSection = new AuditSection();
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "LAST_ACCESS")
+    private Date lastAccess;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "LOGIN_ACCESS")
+    private Date loginTime;
+    @Embedded
+    private CredentialsReset credentialsResetRequest = null;
 
-	@Override
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public User() {
 
-	@Override
-	public AuditSection getAuditSection() {
-		return auditSection;
-	}
+    }
 
-	@Override
-	public void setAuditSection(AuditSection audit) {
-		auditSection = audit;
-		
-	}
+    public User(String userName, String password, String email) {
 
-	public String getAdminName() {
-		return adminName;
-	}
+        this.adminName = userName;
+        this.adminPassword = password;
+        this.adminEmail = email;
+    }
 
-	public void setAdminName(String adminName) {
-		this.adminName = adminName;
-	}
+    public CredentialsReset getCredentialsResetRequest() {
+        return credentialsResetRequest;
+    }
 
-	public String getAdminEmail() {
-		return adminEmail;
-	}
+    public void setCredentialsResetRequest(CredentialsReset credentialsResetRequest) {
+        this.credentialsResetRequest = credentialsResetRequest;
+    }
 
-	public void setAdminEmail(String adminEmail) {
-		this.adminEmail = adminEmail;
-	}
+    @Override
+    public Long getId() {
+        return this.id;
+    }
 
-	public String getAdminPassword() {
-		return adminPassword;
-	}
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setAdminPassword(String adminPassword) {
-		this.adminPassword = adminPassword;
-	}
+    @Override
+    public AuditSection getAuditSection() {
+        return auditSection;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    @Override
+    public void setAuditSection(AuditSection audit) {
+        auditSection = audit;
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public String getAdminName() {
+        return adminName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public void setAdminName(String adminName) {
+        this.adminName = adminName;
+    }
 
-	public Language getDefaultLanguage() {
-		return defaultLanguage;
-	}
+    public String getAdminEmail() {
+        return adminEmail;
+    }
 
-	public void setDefaultLanguage(Language defaultLanguage) {
-		this.defaultLanguage = defaultLanguage;
-	}
+    public void setAdminEmail(String adminEmail) {
+        this.adminEmail = adminEmail;
+    }
 
-	public String getQuestion1() {
-		return question1;
-	}
+    public String getAdminPassword() {
+        return adminPassword;
+    }
 
-	public void setQuestion1(String question1) {
-		this.question1 = question1;
-	}
+    public void setAdminPassword(String adminPassword) {
+        this.adminPassword = adminPassword;
+    }
 
-	public String getQuestion2() {
-		return question2;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public void setQuestion2(String question2) {
-		this.question2 = question2;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public String getQuestion3() {
-		return question3;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public void setQuestion3(String question3) {
-		this.question3 = question3;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public String getAnswer1() {
-		return answer1;
-	}
+    public Language getDefaultLanguage() {
+        return defaultLanguage;
+    }
 
-	public void setAnswer1(String answer1) {
-		this.answer1 = answer1;
-	}
+    public void setDefaultLanguage(Language defaultLanguage) {
+        this.defaultLanguage = defaultLanguage;
+    }
 
-	public String getAnswer2() {
-		return answer2;
-	}
+    public String getQuestion1() {
+        return question1;
+    }
 
-	public void setAnswer2(String answer2) {
-		this.answer2 = answer2;
-	}
+    public void setQuestion1(String question1) {
+        this.question1 = question1;
+    }
 
-	public String getAnswer3() {
-		return answer3;
-	}
+    public String getQuestion2() {
+        return question2;
+    }
 
-	public void setAnswer3(String answer3) {
-		this.answer3 = answer3;
-	}
+    public void setQuestion2(String question2) {
+        this.question2 = question2;
+    }
 
-	public void setGroups(List<Group> groups) {
-		this.groups = groups;
-	}
+    public String getQuestion3() {
+        return question3;
+    }
 
-	public List<Group> getGroups() {
-		return groups;
-	}
+    public void setQuestion3(String question3) {
+        this.question3 = question3;
+    }
 
-	public MerchantStore getMerchantStore() {
-		return merchantStore;
-	}
+    public String getAnswer1() {
+        return answer1;
+    }
 
-	public void setMerchantStore(MerchantStore merchantStore) {
-		this.merchantStore = merchantStore;
-	}
+    public void setAnswer1(String answer1) {
+        this.answer1 = answer1;
+    }
 
-	public void setActive(boolean active) {
-		this.active = active;
-	}
+    public String getAnswer2() {
+        return answer2;
+    }
 
-	public boolean isActive() {
-		return active;
-	}
+    public void setAnswer2(String answer2) {
+        this.answer2 = answer2;
+    }
 
-	public void setLastAccess(Date lastAccess) {
-		this.lastAccess = lastAccess;
-	}
+    public String getAnswer3() {
+        return answer3;
+    }
 
-	public Date getLastAccess() {
-		return lastAccess;
-	}
+    public void setAnswer3(String answer3) {
+        this.answer3 = answer3;
+    }
 
-	public void setLoginTime(Date loginTime) {
-		this.loginTime = loginTime;
-	}
+    public List<Group> getGroups() {
+        return groups;
+    }
 
-	public Date getLoginTime() {
-		return loginTime;
-	}
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
+    }
+
+    public MerchantStore getMerchantStore() {
+        return merchantStore;
+    }
+
+    public void setMerchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public Date getLastAccess() {
+        return lastAccess;
+    }
+
+    public void setLastAccess(Date lastAccess) {
+        this.lastAccess = lastAccess;
+    }
+
+    public Date getLoginTime() {
+        return loginTime;
+    }
+
+    public void setLoginTime(Date loginTime) {
+        this.loginTime = loginTime;
+    }
 
 /*	public String getResetPasswordToken() {
-		return resetPasswordToken;
-	}
+        return resetPasswordToken;
+    }
 
-	public void setResetPasswordToken(String resetPasswordToken) {
-		this.resetPasswordToken = resetPasswordToken;
-	}
+    public void setResetPasswordToken(String resetPasswordToken) {
+        this.resetPasswordToken = resetPasswordToken;
+    }
 
-	public Date getTokenPasswordExpiration() {
-		return tokenPasswordExpiration;
-	}
+    public Date getTokenPasswordExpiration() {
+        return tokenPasswordExpiration;
+    }
 
-	public void setTokenPasswordExpiration(Date tokenPasswordExpiration) {
-		this.tokenPasswordExpiration = tokenPasswordExpiration;
-	}*/
-	
+    public void setTokenPasswordExpiration(Date tokenPasswordExpiration) {
+        this.tokenPasswordExpiration = tokenPasswordExpiration;
+    }*/
+
 
 }

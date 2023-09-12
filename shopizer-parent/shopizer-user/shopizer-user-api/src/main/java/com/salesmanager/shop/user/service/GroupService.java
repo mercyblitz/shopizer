@@ -12,9 +12,12 @@ import java.util.Set;
 public interface GroupService extends SalesManagerEntityService<Integer, Group> {
 
 
-	List<Group> listGroup(GroupType groupType) throws ServiceException;
-	List<Group> listGroupByIds(Set<Integer> ids) throws ServiceException;
-	List<Group> listGroupByNames(List<String> names) throws ServiceException;
-	Group findByName(String groupName) throws ServiceException;
+    List<Group> listGroup(GroupType groupType) throws ServiceException;
+
+    List<Group> listGroupByIds(Set<Integer> ids) throws ServiceException;
+
+    List<Group> listGroupByNames(List<String> names) throws ServiceException;
+
+    Group findByName(String groupName) throws ServiceException;
 
 }

@@ -35,7 +35,6 @@ import static com.salesmanager.shop.commons.util.ReadableEntityUtil.createReadab
 @Service("catalogFacade")
 public class CatalogFacadeImpl implements CatalogFacade {
 
-
     @Autowired
     private CatalogService catalogService;
 

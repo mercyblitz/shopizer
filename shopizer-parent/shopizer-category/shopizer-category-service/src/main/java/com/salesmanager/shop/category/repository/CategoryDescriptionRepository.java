@@ -8,13 +8,10 @@ import java.util.List;
 
 
 public interface CategoryDescriptionRepository extends JpaRepository<CategoryDescription, Long> {
-	
-
-	@Query("select c from CategoryDescription c where c.category.id = ?1")
-	List<CategoryDescription> listByCategoryId(Long categoryId);
-	
 
 
+    @Query("select c from CategoryDescription c where c.category.id = ?1")
+    List<CategoryDescription> listByCategoryId(Long categoryId);
 
-	
+
 }

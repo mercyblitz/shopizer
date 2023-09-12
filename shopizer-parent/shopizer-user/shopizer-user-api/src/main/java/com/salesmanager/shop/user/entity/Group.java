@@ -1,10 +1,10 @@
 package com.salesmanager.shop.user.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.salesmanager.shop.commons.entity.common.audit.AuditListener;
+import com.salesmanager.shop.commons.entity.common.audit.AuditSection;
+import com.salesmanager.shop.commons.entity.common.audit.Auditable;
 import com.salesmanager.shop.commons.entity.generic.SalesManagerEntity;
-import com.salesmanager.shop.commons.model.audit.AuditListener;
-import com.salesmanager.shop.commons.model.audit.AuditSection;
-import com.salesmanager.shop.commons.model.audit.Auditable;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -29,91 +29,87 @@ import java.util.Set;
 @Entity
 @EntityListeners(value = AuditListener.class)
 @Table(name = "SM_GROUP", indexes = {
-		@Index(name = "SM_GROUP_GROUP_TYPE", columnList = "GROUP_TYPE") })
+        @Index(name = "SM_GROUP_GROUP_TYPE", columnList = "GROUP_TYPE")})
 public class Group extends SalesManagerEntity<Integer, Group> implements Auditable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id
-	@Column(name = "GROUP_ID", unique = true, nullable = false)
-	@TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "GROUP_SEQ_NEXT_VAL")
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
-	private Integer id;
-
-	public Group() {
-
-	}
-
-	@Column(name = "GROUP_TYPE")
-	@Enumerated(value = EnumType.STRING)
-	private GroupType groupType;
-
-	@NotEmpty
-	@Column(name = "GROUP_NAME", unique = true)
-	private String groupName;
-
-	public Group(String groupName) {
-		this.groupName = groupName;
-	}
-
-	@JsonIgnore
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Column(name = "GROUP_ID", unique = true, nullable = false)
+    @TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "GROUP_SEQ_NEXT_VAL")
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
+    private Integer id;
+    @Column(name = "GROUP_TYPE")
+    @Enumerated(value = EnumType.STRING)
+    private GroupType groupType;
+    @NotEmpty
+    @Column(name = "GROUP_NAME", unique = true)
+    private String groupName;
+    @JsonIgnore
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
-        })
-        @JoinTable(name = "PERMISSION_GROUP",
+    })
+    @JoinTable(name = "PERMISSION_GROUP",
             joinColumns = @JoinColumn(name = "GROUP_ID"),
             inverseJoinColumns = @JoinColumn(name = "PERMISSION_ID")
-        )
-	private Set<Permission> permissions = new HashSet<Permission>();
+    )
+    private Set<Permission> permissions = new HashSet<Permission>();
+    @Embedded
+    private AuditSection auditSection = new AuditSection();
 
-	public Set<Permission> getPermissions() {
-		return permissions;
-	}
+    public Group() {
 
-	public void setPermissions(Set<Permission> permissions) {
-		this.permissions = permissions;
-	}
+    }
 
-	@Embedded
-	private AuditSection auditSection = new AuditSection();
+    public Group(String groupName) {
+        this.groupName = groupName;
+    }
 
-	@Override
-	public AuditSection getAuditSection() {
-		return this.auditSection;
-	}
+    public Set<Permission> getPermissions() {
+        return permissions;
+    }
 
-	@Override
-	public void setAuditSection(AuditSection audit) {
-		this.auditSection = audit;
-	}
+    public void setPermissions(Set<Permission> permissions) {
+        this.permissions = permissions;
+    }
 
-	@Override
-	public Integer getId() {
-		return this.id;
-	}
+    @Override
+    public AuditSection getAuditSection() {
+        return this.auditSection;
+    }
 
-	@Override
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    @Override
+    public void setAuditSection(AuditSection audit) {
+        this.auditSection = audit;
+    }
 
-	public String getGroupName() {
-		return groupName;
-	}
+    @Override
+    public Integer getId() {
+        return this.id;
+    }
 
-	public void setGroupName(String groupName) {
-		this.groupName = groupName;
-	}
+    @Override
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setGroupType(GroupType groupType) {
-		this.groupType = groupType;
-	}
+    public String getGroupName() {
+        return groupName;
+    }
 
-	public GroupType getGroupType() {
-		return groupType;
-	}
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
+
+    public GroupType getGroupType() {
+        return groupType;
+    }
+
+    public void setGroupType(GroupType groupType) {
+        this.groupType = groupType;
+    }
 
 }

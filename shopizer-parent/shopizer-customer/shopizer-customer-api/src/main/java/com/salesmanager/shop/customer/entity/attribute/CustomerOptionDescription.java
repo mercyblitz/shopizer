@@ -2,7 +2,7 @@ package com.salesmanager.shop.customer.entity.attribute;
 
 
 import com.salesmanager.shop.commons.constants.SchemaConstant;
-import com.salesmanager.shop.commons.model.description.Description;
+import com.salesmanager.shop.commons.entity.common.description.Description;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

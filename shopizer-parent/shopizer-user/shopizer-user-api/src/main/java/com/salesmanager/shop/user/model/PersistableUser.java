@@ -5,65 +5,63 @@ import java.util.List;
 
 public class PersistableUser extends UserEntity {
 
-	private String password;
-	private String repeatPassword;
-	private String store;
-	private String userName;
-	private boolean active;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    private String password;
+    private String repeatPassword;
+    private String store;
+    private String userName;
+    private boolean active;
+    private List<PersistableGroup> groups = new ArrayList<PersistableGroup>();
 
-	public String getUserName() {
-		return userName;
-	}
+    public String getUserName() {
+        return userName;
+    }
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    public String getPassword() {
+        return password;
+    }
 
-	private List<PersistableGroup> groups = new ArrayList<PersistableGroup>();
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public List<PersistableGroup> getGroups() {
+        return groups;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setGroups(List<PersistableGroup> groups) {
+        this.groups = groups;
+    }
 
-	public List<PersistableGroup> getGroups() {
-		return groups;
-	}
+    public String getStore() {
+        return store;
+    }
 
-	public void setGroups(List<PersistableGroup> groups) {
-		this.groups = groups;
-	}
+    public void setStore(String store) {
+        this.store = store;
+    }
 
-	public String getStore() {
-		return store;
-	}
+    public boolean isActive() {
+        return active;
+    }
 
-	public void setStore(String store) {
-		this.store = store;
-	}
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
-	public boolean isActive() {
-		return active;
-	}
+    public String getRepeatPassword() {
+        return repeatPassword;
+    }
 
-	public void setActive(boolean active) {
-		this.active = active;
-	}
-
-	public String getRepeatPassword() {
-		return repeatPassword;
-	}
-
-	public void setRepeatPassword(String repeatPassword) {
-		this.repeatPassword = repeatPassword;
-	}
+    public void setRepeatPassword(String repeatPassword) {
+        this.repeatPassword = repeatPassword;
+    }
 
 }

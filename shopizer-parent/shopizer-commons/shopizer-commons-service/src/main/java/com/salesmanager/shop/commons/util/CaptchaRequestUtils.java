@@ -2,7 +2,7 @@ package com.salesmanager.shop.commons.util;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.salesmanager.shop.constants.ApplicationConstants;
+import com.salesmanager.shop.commons.constants.ApplicationConstants;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -29,83 +29,82 @@ import java.util.Map;
  * https://www.google.com/recaptcha/api/siteverify
  * Throws an exception if it can't connect to reCaptcha
  * returns true or false if validation has passed
- * @author carlsamson
  *
+ * @author carlsamson
  */
 @Component
 public class CaptchaRequestUtils {
-	
-	@Inject
-	private CoreConfiguration configuration; //for reading public and secret key
-	
-	private static final String SUCCESS_INDICATOR = "success";
-	
-	  @Value("${config.recaptcha.secretKey}")
-	  private String secretKey;
-	
-	public boolean checkCaptcha(String gRecaptchaResponse) throws Exception {
 
-		HttpClient client = HttpClientBuilder.create().build();
-	    
-	    String url = configuration.getProperty(ApplicationConstants.RECAPTCHA_URL);;
+    private static final String SUCCESS_INDICATOR = "success";
+    @Inject
+    private CoreConfiguration configuration; //for reading public and secret key
+    @Value("${config.recaptcha.secretKey}")
+    private String secretKey;
+
+    public boolean checkCaptcha(String gRecaptchaResponse) throws Exception {
+
+        HttpClient client = HttpClientBuilder.create().build();
+
+        String url = configuration.getProperty(ApplicationConstants.RECAPTCHA_URL);
 
         List<NameValuePair> data = new ArrayList<NameValuePair>();
-        data.add(new BasicNameValuePair("secret",  secretKey));
-        data.add(new BasicNameValuePair("response",  gRecaptchaResponse));
+        data.add(new BasicNameValuePair("secret", secretKey));
+        data.add(new BasicNameValuePair("response", gRecaptchaResponse));
 
-	    
-	    // Create a method instance.
+
+        // Create a method instance.
         HttpPost post = new HttpPost(url);
-	    post.setEntity(new UrlEncodedFormEntity(data,StandardCharsets.UTF_8));
-	    
-	    boolean checkCaptcha = false;
-	    
+        post.setEntity(new UrlEncodedFormEntity(data, StandardCharsets.UTF_8));
 
-	    try {
-	      // Execute the method.
+        boolean checkCaptcha = false;
+
+
+        try {
+            // Execute the method.
             HttpResponse httpResponse = client.execute(post);
             int statusCode = httpResponse.getStatusLine().getStatusCode();
 
-	      if (statusCode != HttpStatus.SC_OK) {
-	    	throw new Exception("Got an invalid response from reCaptcha " + url + " [" + httpResponse.getStatusLine() + "]");
-	      }
+            if (statusCode != HttpStatus.SC_OK) {
+                throw new Exception("Got an invalid response from reCaptcha " + url + " [" + httpResponse.getStatusLine() + "]");
+            }
 
-	      // Read the response body.
+            // Read the response body.
             HttpEntity entity = httpResponse.getEntity();
-            byte[] responseBody =EntityUtils.toByteArray(entity);
+            byte[] responseBody = EntityUtils.toByteArray(entity);
 
 
-	      // Deal with the response.
-	      // Use caution: ensure correct character encoding and is not binary data
-	      //System.out.println(new String(responseBody));
-	      
-	      String json = new String(responseBody);
-	      
-	      Map<String,String> map = new HashMap<String,String>();
-	  	  ObjectMapper mapper = new ObjectMapper();
-	  	  
-	  	  map = mapper.readValue(json, 
-			    new TypeReference<HashMap<String,String>>(){});
-	  	  
-	  	  String successInd = map.get(SUCCESS_INDICATOR);
-	  	  
-	  	  if(StringUtils.isBlank(successInd)) {
-	  		  throw new Exception("Unreadable response from reCaptcha " + json);
-	  	  }
-	  	  
-	  	  Boolean responseBoolean = Boolean.valueOf(successInd);
-	  	  
-	  	  if(responseBoolean) {
-	  		checkCaptcha = true;
-	  	  }
-	  	  
-	  	  return checkCaptcha;
+            // Deal with the response.
+            // Use caution: ensure correct character encoding and is not binary data
+            //System.out.println(new String(responseBody));
 
-	    } finally {
-	      // Release the connection.
-	      post.releaseConnection();
-	    }  
-	  }
+            String json = new String(responseBody);
+
+            Map<String, String> map = new HashMap<String, String>();
+            ObjectMapper mapper = new ObjectMapper();
+
+            map = mapper.readValue(json,
+                    new TypeReference<HashMap<String, String>>() {
+                    });
+
+            String successInd = map.get(SUCCESS_INDICATOR);
+
+            if (StringUtils.isBlank(successInd)) {
+                throw new Exception("Unreadable response from reCaptcha " + json);
+            }
+
+            Boolean responseBoolean = Boolean.valueOf(successInd);
+
+            if (responseBoolean) {
+                checkCaptcha = true;
+            }
+
+            return checkCaptcha;
+
+        } finally {
+            // Release the connection.
+            post.releaseConnection();
+        }
+    }
 
 
 }

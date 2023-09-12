@@ -7,38 +7,32 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 
-public class FieldMatchValidator implements ConstraintValidator<FieldMatch, Object>
-{
-    
-    private static final Logger LOG=LoggerFactory.getLogger(FieldMatchValidator.class);
+public class FieldMatchValidator implements ConstraintValidator<FieldMatch, Object> {
+
+    private static final Logger LOG = LoggerFactory.getLogger(FieldMatchValidator.class);
     private String firstFieldName;
     private String secondFieldName;
     private BeanUtils beanUtils;
 
     @Override
-    public void initialize(final FieldMatch constraintAnnotation)
-    {
+    public void initialize(final FieldMatch constraintAnnotation) {
         this.firstFieldName = constraintAnnotation.first();
         this.secondFieldName = constraintAnnotation.second();
-        this.beanUtils=BeanUtils.newInstance();
+        this.beanUtils = BeanUtils.newInstance();
     }
 
-    @SuppressWarnings( "nls" )
+    @SuppressWarnings("nls")
     @Override
-    public boolean isValid(final Object value, final ConstraintValidatorContext context)
-    {
-        try
-        {
+    public boolean isValid(final Object value, final ConstraintValidatorContext context) {
+        try {
             final Object firstObj = this.beanUtils.getPropertyValue(value, this.firstFieldName);
             final Object secondObj = this.beanUtils.getPropertyValue(value, this.secondFieldName);
             return firstObj == null && secondObj == null || firstObj != null && firstObj.equals(secondObj);
-        }
-        catch (final Exception ex)
-        {
-            LOG.info( "Error while getting values from object", ex );
+        } catch (final Exception ex) {
+            LOG.info("Error while getting values from object", ex);
             return false;
-           
+
         }
-       
+
     }
 }

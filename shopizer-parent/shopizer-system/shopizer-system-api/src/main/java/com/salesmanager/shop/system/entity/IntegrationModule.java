@@ -1,9 +1,9 @@
 package com.salesmanager.shop.system.entity;
 
+import com.salesmanager.shop.commons.entity.common.audit.AuditListener;
+import com.salesmanager.shop.commons.entity.common.audit.AuditSection;
+import com.salesmanager.shop.commons.entity.common.audit.Auditable;
 import com.salesmanager.shop.commons.entity.generic.SalesManagerEntity;
-import com.salesmanager.shop.commons.model.audit.AuditListener;
-import com.salesmanager.shop.commons.model.audit.AuditSection;
-import com.salesmanager.shop.commons.model.audit.Auditable;
 import com.salesmanager.shop.system.model.ModuleConfig;
 import org.hibernate.annotations.Type;
 

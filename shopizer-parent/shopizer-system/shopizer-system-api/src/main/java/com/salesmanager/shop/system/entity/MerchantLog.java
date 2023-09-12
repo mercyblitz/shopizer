@@ -1,8 +1,8 @@
 package com.salesmanager.shop.system.entity;
 
+import com.salesmanager.shop.commons.entity.common.audit.AuditListener;
 import com.salesmanager.shop.commons.entity.generic.SalesManagerEntity;
 import com.salesmanager.shop.commons.entity.merchant.MerchantStore;
-import com.salesmanager.shop.commons.model.audit.AuditListener;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;

@@ -5,7 +5,6 @@ import com.salesmanager.shop.category.entity.Category;
 import com.salesmanager.shop.category.model.PersistableCategory;
 import com.salesmanager.shop.category.model.ReadableCategory;
 import com.salesmanager.shop.category.model.ReadableCategoryList;
-import com.salesmanager.shop.category.model.product.attribute.ReadableProductVariant;
 import com.salesmanager.shop.commons.entity.merchant.MerchantStore;
 import com.salesmanager.shop.commons.entity.reference.language.Language;
 import com.salesmanager.shop.commons.model.entity.ListCriteria;
@@ -69,16 +68,6 @@ public interface CategoryFacade {
 	void deleteCategory(Long categoryId, MerchantStore store);
 
 	void deleteCategory(Category category);
-
-
-	/**
-	 * List product options variations for a given category
-	 * @param categoryId
-	 * @param store
-	 * @param language
-	 * @return
-	 */
-	List<ReadableProductVariant> categoryProductVariants(Long categoryId, MerchantStore store, Language language);
 
 	/**
 	 * Check if category code already exist

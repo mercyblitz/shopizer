@@ -34,21 +34,21 @@ public class DataConfiguration {
     @Value("${hibernate.db.schema}")
     private String schema;
 
-	@Bean
-	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
-		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-		vendorAdapter.setGenerateDdl(true);
-		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-		factory.setJpaVendorAdapter(vendorAdapter);
-		factory.setPackagesToScan("com.salesmanager.shop");
-		factory.setJpaProperties(additionalProperties());
-		factory.setDataSource(dataSource);
-		return factory;
-	}
-	
+    @Bean
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
+        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        vendorAdapter.setGenerateDdl(true);
+        LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
+        factory.setJpaVendorAdapter(vendorAdapter);
+        factory.setPackagesToScan("com.salesmanager.shop");
+        factory.setJpaProperties(additionalProperties());
+        factory.setDataSource(dataSource);
+        return factory;
+    }
+
     final Properties additionalProperties() {
         final Properties hibernateProperties = new Properties();
-        
+
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", hbm2ddl);
         hibernateProperties.setProperty("hibernate.default_schema", schema);
         hibernateProperties.setProperty("hibernate.dialect", dialect);
@@ -65,11 +65,11 @@ public class DataConfiguration {
         return hibernateProperties;
     }
 
-	@Bean
-	public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
-		JpaTransactionManager txManager = new JpaTransactionManager();
-		txManager.setEntityManagerFactory(entityManagerFactory);
-		return txManager;
-	}
+    @Bean
+    public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+        JpaTransactionManager txManager = new JpaTransactionManager();
+        txManager.setEntityManagerFactory(entityManagerFactory);
+        return txManager;
+    }
 
 }

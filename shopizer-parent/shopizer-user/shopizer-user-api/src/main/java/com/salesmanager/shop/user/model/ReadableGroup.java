@@ -2,27 +2,25 @@ package com.salesmanager.shop.user.model;
 
 /**
  * Object used for reading a group
- * 
- * @author carlsamson
  *
+ * @author carlsamson
  */
 public class ReadableGroup extends GroupEntity {
 
-  /**
-   * 
-   */
-  private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-  private Long id = 0L;
+    private Long id = 0L;
 
-  public void setId(Long id) {
-    this.id = id;
-  }
+    public Long getId() {
+        return id;
+    }
 
-  public Long getId() {
-    return id;
-  }
-
+    public void setId(Long id) {
+        this.id = id;
+    }
 
 
 }

@@ -1,9 +1,9 @@
 package com.salesmanager.shop.user.entity;
 
+import com.salesmanager.shop.commons.entity.common.audit.AuditListener;
+import com.salesmanager.shop.commons.entity.common.audit.AuditSection;
+import com.salesmanager.shop.commons.entity.common.audit.Auditable;
 import com.salesmanager.shop.commons.entity.generic.SalesManagerEntity;
-import com.salesmanager.shop.commons.model.audit.AuditListener;
-import com.salesmanager.shop.commons.model.audit.AuditSection;
-import com.salesmanager.shop.commons.model.audit.Auditable;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -24,71 +24,66 @@ import java.util.List;
 @Table(name = "PERMISSION")
 public class Permission extends SalesManagerEntity<Integer, Permission> implements Auditable {
 
-	
 
-	private static final long serialVersionUID = 813468140197420748L;
+    private static final long serialVersionUID = 813468140197420748L;
 
-	@Id
-	@Column(name = "PERMISSION_ID", unique=true, nullable=false)
-	@TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "PERMISSION_SEQ_NEXT_VAL")
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
-	private Integer id;
-	
-	public Permission() {
-		
-	}
-	
-	public Permission(String permissionName) {
-		this.permissionName = permissionName;
-	}
-	
-	
-	@NotEmpty
-	@Column(name="PERMISSION_NAME", unique=true)
-	private String permissionName;
+    @Id
+    @Column(name = "PERMISSION_ID", unique = true, nullable = false)
+    @TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "PERMISSION_SEQ_NEXT_VAL")
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
+    private Integer id;
+    @NotEmpty
+    @Column(name = "PERMISSION_NAME", unique = true)
+    private String permissionName;
+    @ManyToMany(mappedBy = "permissions")
+    private List<Group> groups = new ArrayList<Group>();
+    @Embedded
+    private AuditSection auditSection = new AuditSection();
 
-	@ManyToMany(mappedBy = "permissions")
-	private List<Group> groups = new ArrayList<Group>();
-	
-	@Embedded
-	private AuditSection auditSection = new AuditSection();
+    public Permission() {
 
-	@Override
-	public Integer getId() {
-		return this.id;
-	}
+    }
 
-	@Override
-	public void setId(Integer id) {
-		this.id = id;
-		
-	}
+    public Permission(String permissionName) {
+        this.permissionName = permissionName;
+    }
 
-	@Override
-	public AuditSection getAuditSection() {
-		return this.auditSection;
-	}
+    @Override
+    public Integer getId() {
+        return this.id;
+    }
 
-	@Override
-	public void setAuditSection(AuditSection audit) {
-		this.auditSection = audit;
-		
-	}
+    @Override
+    public void setId(Integer id) {
+        this.id = id;
 
-	public String getPermissionName() {
-		return permissionName;
-	}
+    }
 
-	public void setPermissionName(String permissionName) {
-		this.permissionName = permissionName;
-	}
-	
-	public void setGroups(List<Group> groups) {
-		this.groups = groups;
-	}
+    @Override
+    public AuditSection getAuditSection() {
+        return this.auditSection;
+    }
 
-	public List<Group> getGroups() {
-		return groups;
-	}
+    @Override
+    public void setAuditSection(AuditSection audit) {
+        this.auditSection = audit;
+
+    }
+
+    public String getPermissionName() {
+        return permissionName;
+    }
+
+    public void setPermissionName(String permissionName) {
+        this.permissionName = permissionName;
+    }
+
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
+    }
 
 }

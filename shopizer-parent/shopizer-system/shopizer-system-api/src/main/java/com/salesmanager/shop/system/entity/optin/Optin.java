@@ -1,9 +1,9 @@
 package com.salesmanager.shop.system.entity.optin;
 
 
+import com.salesmanager.shop.commons.entity.common.audit.AuditListener;
 import com.salesmanager.shop.commons.entity.generic.SalesManagerEntity;
 import com.salesmanager.shop.commons.entity.merchant.MerchantStore;
-import com.salesmanager.shop.commons.model.audit.AuditListener;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,107 +26,105 @@ import java.util.Date;
 
 /**
  * Optin defines optin campaigns for the system.
- * @author carlsamson
  *
+ * @author carlsamson
  */
 @Entity
 @EntityListeners(value = AuditListener.class)
-@Table(name = "OPTIN",uniqueConstraints=
+@Table(name = "OPTIN", uniqueConstraints =
 @UniqueConstraint(columnNames = {"MERCHANT_ID", "CODE"}))
 public class Optin extends SalesManagerEntity<Long, Optin> implements Serializable {
 
-	
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    @Id
+    @Column(name = "OPTIN_ID")
+    @TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "OPTIN_SEQ_NEXT_VAL")
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
+    private Long id;
 
-	@Id
-	@Column(name = "OPTIN_ID")
-	@TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "OPTIN_SEQ_NEXT_VAL")
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
-	private Long id;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column (name ="START_DATE")
-	private Date startDate;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column (name ="END_DATE")
-	private Date endDate;
-	
-	@Column(name="TYPE", nullable=false)
-	@Enumerated(value = EnumType.STRING)
-	private OptinType optinType;
-	
-	@ManyToOne(targetEntity = MerchantStore.class)
-	@JoinColumn(name="MERCHANT_ID")
-	private MerchantStore merchant;
-	
-	@Column(name="CODE", nullable=false)
-	private String code;
-	
-	@Column(name="DESCRIPTION")
-	private String description;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "START_DATE")
+    private Date startDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "END_DATE")
+    private Date endDate;
+
+    @Column(name = "TYPE", nullable = false)
+    @Enumerated(value = EnumType.STRING)
+    private OptinType optinType;
+
+    @ManyToOne(targetEntity = MerchantStore.class)
+    @JoinColumn(name = "MERCHANT_ID")
+    private MerchantStore merchant;
+
+    @Column(name = "CODE", nullable = false)
+    private String code;
+
+    @Column(name = "DESCRIPTION")
+    private String description;
 
 
-	@Override
-	public Long getId() {
-		return id;
-	}
+    @Override
+    public Long getId() {
+        return id;
+    }
 
-	@Override
-	public void setId(Long id) {
-		this.id = id;	
-	}
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Date getStartDate() {
-		return startDate;
-	}
+    public Date getStartDate() {
+        return startDate;
+    }
 
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
 
-	public Date getEndDate() {
-		return endDate;
-	}
+    public Date getEndDate() {
+        return endDate;
+    }
 
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
 
-	public MerchantStore getMerchant() {
-		return merchant;
-	}
+    public MerchantStore getMerchant() {
+        return merchant;
+    }
 
-	public void setMerchant(MerchantStore merchant) {
-		this.merchant = merchant;
-	}
+    public void setMerchant(MerchantStore merchant) {
+        this.merchant = merchant;
+    }
 
-	public String getCode() {
-		return code;
-	}
+    public String getCode() {
+        return code;
+    }
 
-	public void setCode(String code) {
-		this.code = code;
-	}
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public OptinType getOptinType() {
-		return optinType;
-	}
+    public OptinType getOptinType() {
+        return optinType;
+    }
 
-	public void setOptinType(OptinType optinType) {
-		this.optinType = optinType;
-	}
+    public void setOptinType(OptinType optinType) {
+        this.optinType = optinType;
+    }
 
 }

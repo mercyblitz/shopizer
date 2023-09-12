@@ -1,4 +1,4 @@
-package com.salesmanager.shop.catalog.mapper;
+package com.salesmanager.shop.category.mapper;
 
 import com.salesmanager.shop.category.entity.Category;
 import com.salesmanager.shop.category.model.CategoryDescription;

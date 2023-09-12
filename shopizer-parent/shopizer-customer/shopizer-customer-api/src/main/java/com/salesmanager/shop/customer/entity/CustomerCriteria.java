@@ -1,7 +1,7 @@
 package com.salesmanager.shop.customer.entity;
 
 
-import com.salesmanager.shop.commons.model.Criteria;
+import com.salesmanager.shop.commons.model.entity.Criteria;
 
 public class CustomerCriteria extends Criteria {
 	

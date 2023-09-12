@@ -10,17 +10,17 @@ import java.net.UnknownHostException;
 
 @Component
 public class ServerConfig implements ApplicationListener<WebServerInitializedEvent> {
-	
-	private String applicationHost = null;
-	
-	@Override
-	public void onApplicationEvent(final WebServerInitializedEvent event) {
-	    int port = event.getWebServer().getPort();
-	    final String host = getHost();
-	    setApplicationHost(String.join(":", host, String.valueOf(port)));
 
-	}
-	
+    private String applicationHost = null;
+
+    @Override
+    public void onApplicationEvent(final WebServerInitializedEvent event) {
+        int port = event.getWebServer().getPort();
+        final String host = getHost();
+        setApplicationHost(String.join(":", host, String.valueOf(port)));
+
+    }
+
     private String getHost() {
         try {
             return InetAddress.getLocalHost().getHostAddress();
@@ -30,12 +30,12 @@ public class ServerConfig implements ApplicationListener<WebServerInitializedEve
         }
     }
 
-	public String getApplicationHost() {
-		return applicationHost;
-	}
+    public String getApplicationHost() {
+        return applicationHost;
+    }
 
-	public void setApplicationHost(String applicationHost) {
-		this.applicationHost = applicationHost;
-	}
+    public void setApplicationHost(String applicationHost) {
+        this.applicationHost = applicationHost;
+    }
 
 }

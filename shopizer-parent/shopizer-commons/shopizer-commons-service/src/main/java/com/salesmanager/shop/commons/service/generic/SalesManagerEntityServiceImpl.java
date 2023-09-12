@@ -18,10 +18,10 @@ public abstract class SalesManagerEntityServiceImpl<K extends Serializable & Com
     /**
      * Classe de l'entité, déterminé à partir des paramètres generics.
      */
-    private Class<E> objectClass;
+    private final Class<E> objectClass;
 
 
-    private JpaRepository<E, K> repository;
+    private final JpaRepository<E, K> repository;
 
     @SuppressWarnings("unchecked")
     public SalesManagerEntityServiceImpl(JpaRepository<E, K> repository) {

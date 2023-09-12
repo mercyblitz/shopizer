@@ -33,13 +33,7 @@
             <version>${project.version}</version>
         </dependency>
 
-        <!-- Shopizer Product API -->
-        <dependency>
-            <groupId>com.shopizer</groupId>
-            <artifactId>shopizer-product-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
+        <!-- Shopizer Commons Service -->
         <dependency>
             <groupId>com.shopizer</groupId>
             <artifactId>shopizer-commons-service</artifactId>
