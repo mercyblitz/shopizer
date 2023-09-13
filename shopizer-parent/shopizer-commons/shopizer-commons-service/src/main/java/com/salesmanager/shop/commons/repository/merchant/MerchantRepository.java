@@ -28,18 +28,18 @@ public interface MerchantRepository extends JpaRepository<MerchantStore, Integer
     @Query("SELECT COUNT(m) > 0 FROM MerchantStore m WHERE m.code = :code")
     boolean existsByCode(String code);
 
-    @Query("select new com.salesmanager.core.model.merchant.MerchantStore(m.id, m.code, m.storename) from MerchantStore m")
+    @Query("select new com.salesmanager.shop.commons.entity.merchant.MerchantStore(m.id, m.code, m.storename) from MerchantStore m")
     List<MerchantStore> findAllStoreNames();
 
-    @Query(value = "select new com.salesmanager.core.model.merchant.MerchantStore(m.id, m.code, m.storename) from MerchantStore m left join m.parent mp "
+    @Query(value = "select new com.salesmanager.shop.commons.entity.merchant.MerchantStore(m.id, m.code, m.storename) from MerchantStore m left join m.parent mp "
             + "where mp.code = ?1 or m.code = ?1")
     List<MerchantStore> findAllStoreNames(String storeCode);
 
-    @Query(value = "select new com.salesmanager.core.model.merchant.MerchantStore(m.id, m.code, m.storename) from MerchantStore m left join m.parent mp "
+    @Query(value = "select new com.salesmanager.shop.commons.entity.merchant.MerchantStore(m.id, m.code, m.storename) from MerchantStore m left join m.parent mp "
             + "where mp.code in ?1 or m.code in ?1")
     List<MerchantStore> findAllStoreNames(List<String> storeCode);
 
-    @Query("select new com.salesmanager.core.model.merchant.MerchantStore(m.id, m.code, m.storename, m.storeEmailAddress) from MerchantStore m")
+    @Query("select new com.salesmanager.shop.commons.entity.merchant.MerchantStore(m.id, m.code, m.storename, m.storeEmailAddress) from MerchantStore m")
     List<MerchantStore> findAllStoreCodeNameEmail();
 
     @Query(

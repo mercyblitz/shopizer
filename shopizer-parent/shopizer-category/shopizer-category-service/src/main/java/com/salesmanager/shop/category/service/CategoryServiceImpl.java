@@ -10,8 +10,6 @@ import com.salesmanager.shop.commons.entity.merchant.MerchantStore;
 import com.salesmanager.shop.commons.entity.reference.language.Language;
 import com.salesmanager.shop.commons.exception.ServiceException;
 import com.salesmanager.shop.commons.service.generic.SalesManagerEntityServiceImpl;
-import com.salesmanager.shop.product.entity.Product;
-import com.salesmanager.shop.product.service.ProductService;
 import io.microsphere.constants.Constants;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -33,8 +31,6 @@ public class CategoryServiceImpl extends SalesManagerEntityServiceImpl<Long, Cat
 
     private final CategoryRepository categoryRepository;
 
-    @Inject
-    private ProductService productService;
 
     @Inject
     private PageableCategoryRepository pageableCategoryRepository;
@@ -225,7 +221,7 @@ public class CategoryServiceImpl extends SalesManagerEntityServiceImpl<Long, Cat
 
     }
 
-    // @Override
+    @Override
     public void delete(Category category) throws ServiceException {
 
         // get category with lineage (subcategories)
@@ -244,34 +240,34 @@ public class CategoryServiceImpl extends SalesManagerEntityServiceImpl<Long, Cat
             for (Category c : categories) {
                 categoryIds.add(c.getId());
             }
-
-            List<Product> products = productService.getProducts(categoryIds);
-            // org.hibernate.Session session =
-            // em.unwrap(org.hibernate.Session.class);// need to refresh the
-            // session to update
-            // all product
-            // categories
-
-            for (Product product : products) {
-                // session.evict(product);// refresh product so we get all
-                // product categories
-                Product dbProduct = productService.getById(product.getId());
-                Set<Category> productCategories = dbProduct.getCategories();
-                if (productCategories.size() > 1) {
-                    for (Category c : categories) {
-                        productCategories.remove(c);
-                        productService.update(dbProduct);
-                    }
-
-                    if (product.getCategories() == null || product.getCategories().size() == 0) {
-                        productService.delete(dbProduct);
-                    }
-
-                } else {
-                    productService.delete(dbProduct);
-                }
-
-            }
+// TODO
+//            List<Product> products = productService.getProducts(categoryIds);
+//            // org.hibernate.Session session =
+//            // em.unwrap(org.hibernate.Session.class);// need to refresh the
+//            // session to update
+//            // all product
+//            // categories
+//
+//            for (Product product : products) {
+//                // session.evict(product);// refresh product so we get all
+//                // product categories
+//                Product dbProduct = productService.getById(product.getId());
+//                Set<Category> productCategories = dbProduct.getCategories();
+//                if (productCategories.size() > 1) {
+//                    for (Category c : categories) {
+//                        productCategories.remove(c);
+//                        productService.update(dbProduct);
+//                    }
+//
+//                    if (product.getCategories() == null || product.getCategories().size() == 0) {
+//                        productService.delete(dbProduct);
+//                    }
+//
+//                } else {
+//                    productService.delete(dbProduct);
+//                }
+//
+//            }
 
             Category categ = getById(category.getId(), category.getMerchantStore().getId());
             categoryRepository.delete(categ);

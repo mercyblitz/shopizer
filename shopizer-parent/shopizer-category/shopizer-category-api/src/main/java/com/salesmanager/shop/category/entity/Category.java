@@ -32,16 +32,14 @@ import java.util.Set;
 @Entity
 @EntityListeners(value = AuditListener.class)
 @Table(name = "CATEGORY",
-	indexes = @Index(columnList = "LINEAGE"),
-	uniqueConstraints=
-    @UniqueConstraint(columnNames = {"MERCHANT_ID", "CODE"}) )
-
-
+        indexes = @Index(columnList = "LINEAGE"),
+        uniqueConstraints =
+        @UniqueConstraint(columnNames = {"MERCHANT_ID", "CODE"}))
 public class Category extends SalesManagerEntity<Long, Category> implements Auditable {
     private static final long serialVersionUID = 1L;
-    
+
     @Id
-    @Column(name = "CATEGORY_ID", unique=true, nullable=false)
+    @Column(name = "CATEGORY_ID", unique = true, nullable = false)
     @TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "CATEGORY_SEQ_NEXT_VAL")
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
     private Long id;
@@ -50,21 +48,21 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
     private AuditSection auditSection = new AuditSection();
 
     @Valid
-    @OneToMany(mappedBy="category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<CategoryDescription> descriptions = new HashSet<CategoryDescription>();
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="MERCHANT_ID", nullable=false)
+    @JoinColumn(name = "MERCHANT_ID", nullable = false)
     private MerchantStore merchantStore;
-    
+
     @ManyToOne
     @JoinColumn(name = "PARENT_ID")
     private Category parent;
-    
+
     @OneToMany(mappedBy = "parent", cascade = CascadeType.REMOVE)
     private List<Category> categories = new ArrayList<Category>();
-    
-    @Column(name = "CATEGORY_IMAGE", length=100)
+
+    @Column(name = "CATEGORY_IMAGE", length = 100)
     private String categoryImage;
 
     @Column(name = "SORT_ORDER")
@@ -81,12 +79,12 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
 
     @Column(name = "LINEAGE")
     private String lineage;
-    
-    @Column(name="FEATURED")
+
+    @Column(name = "FEATURED")
     private boolean featured;
-    
+
     @NotEmpty
-    @Column(name="CODE", length=100, nullable=false)
+    @Column(name = "CODE", length = 100, nullable = false)
     private String code;
 
     public String getCode() {
@@ -99,12 +97,12 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
 
     public Category() {
     }
-    
+
     public Category(MerchantStore store) {
         this.merchantStore = store;
         this.id = 0L;
     }
-    
+
     @Override
     public Long getId() {
         return this.id;
@@ -114,12 +112,12 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
     public void setId(Long id) {
         this.id = id;
     }
-    
+
     @Override
     public AuditSection getAuditSection() {
         return auditSection;
     }
-    
+
     @Override
     public void setAuditSection(AuditSection auditSection) {
         this.auditSection = auditSection;
@@ -181,8 +179,6 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
     public void setParent(Category parent) {
         this.parent = parent;
     }
-    
-
 
 
     public MerchantStore getMerchantStore() {
@@ -200,12 +196,12 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
     public void setCategories(List<Category> categories) {
         this.categories = categories;
     }
-    
+
     public CategoryDescription getDescription() {
-        if(descriptions!=null && descriptions.size()>0) {
+        if (descriptions != null && descriptions.size() > 0) {
             return descriptions.iterator().next();
         }
-        
+
         return null;
     }
 
@@ -218,11 +214,11 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
     }
 
     public Set<CategoryDescription> getDescriptions() {
-      return descriptions;
+        return descriptions;
     }
 
     public void setDescriptions(Set<CategoryDescription> descriptions) {
-      this.descriptions = descriptions;
+        this.descriptions = descriptions;
     }
 
 }

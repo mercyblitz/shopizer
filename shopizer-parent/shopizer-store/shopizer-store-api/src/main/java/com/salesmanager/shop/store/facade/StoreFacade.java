@@ -5,11 +5,11 @@ import com.salesmanager.shop.commons.entity.content.InputContentFile;
 import com.salesmanager.shop.commons.entity.merchant.MerchantStore;
 import com.salesmanager.shop.commons.entity.merchant.MerchantStoreCriteria;
 import com.salesmanager.shop.commons.entity.reference.language.Language;
-import com.salesmanager.shop.store.model.PersistableBrand;
-import com.salesmanager.shop.store.model.PersistableMerchantStore;
-import com.salesmanager.shop.store.model.ReadableBrand;
-import com.salesmanager.shop.store.model.ReadableMerchantStore;
-import com.salesmanager.shop.store.model.ReadableMerchantStoreList;
+import com.salesmanager.shop.commons.model.store.PersistableBrand;
+import com.salesmanager.shop.commons.model.store.PersistableMerchantStore;
+import com.salesmanager.shop.commons.model.store.ReadableBrand;
+import com.salesmanager.shop.commons.model.store.ReadableMerchantStore;
+import com.salesmanager.shop.commons.model.store.ReadableMerchantStoreList;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;

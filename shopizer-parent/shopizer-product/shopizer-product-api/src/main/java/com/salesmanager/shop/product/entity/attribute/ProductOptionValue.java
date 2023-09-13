@@ -1,7 +1,7 @@
 package com.salesmanager.shop.product.entity.attribute;
 
 import com.salesmanager.core.model.generic.SalesManagerEntity;
-import com.salesmanager.core.model.merchant.MerchantStore;
+import com.salesmanager.shop.commons.entity.merchant.MerchantStore;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.CascadeType;

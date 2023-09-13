@@ -1,11 +1,11 @@
 package com.salesmanager.shop.user.service;
 
+import com.salesmanager.shop.commons.entity.user.Group;
+import com.salesmanager.shop.commons.entity.user.Permission;
+import com.salesmanager.shop.commons.entity.user.PermissionCriteria;
+import com.salesmanager.shop.commons.entity.user.PermissionList;
 import com.salesmanager.shop.commons.exception.ServiceException;
 import com.salesmanager.shop.commons.service.generic.SalesManagerEntityServiceImpl;
-import com.salesmanager.shop.user.entity.Group;
-import com.salesmanager.shop.user.entity.Permission;
-import com.salesmanager.shop.user.entity.PermissionCriteria;
-import com.salesmanager.shop.user.entity.PermissionList;
 import com.salesmanager.shop.user.reposistory.PermissionRepository;
 import org.springframework.stereotype.Service;
 

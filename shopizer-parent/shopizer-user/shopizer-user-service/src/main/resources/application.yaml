@@ -1,0 +1,116 @@
+application-description: '@project.description@'
+application-version: '@project.version@'
+build:
+  timestamp: '@maven.build.timestamp@'
+
+spring:
+  application:
+    name: shopizer-user-service
+  cloud:
+    sentinel:
+      eager: true
+      transport:
+        dashboard: localhost:18080
+      web-context-unify: true
+  jmx:
+    enabled: true
+  jpa:
+    hibernate:
+      use-new-id-generator-mappings: true
+    properties:
+      hibernate:
+        default_schema: SALESMANAGER
+  main:
+    allow-bean-definition-overriding: true
+  servlet:
+    multipart:
+      max-file-size: 4MB
+      max-request-size: 10MB
+
+  datasource:
+    url: jdbc:mysql://127.0.0.1:13306/SALESMANAGER?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+    driverClassName: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimumIdle: 4
+      maximumPoolSize: 8
+      connectionTestQuery: SELECT 1
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:12345/eureka
+  instance:
+    instanceId: ${spring.cloud.client.ip-address}:${server.port}
+    metadataMap:
+      prometheus:
+        scrape: true
+        path: ${management.endpoints.web.basePath:/actuator}/prometheus
+        port: ${management.server.port:${server.port}}
+
+dubbo:
+  scan:
+    base-packages: com.salesmanager.shop.security.service
+  registry:
+    address: multicast://228.0.0.4:1234
+  protocol:
+    name: tri
+    port: 50051
+
+server:
+  error:
+    whitelabel:
+      enabled: false
+  port: 19090
+  tomcat:
+    mbeanregistry:
+      enabled: true
+
+hibernate:
+  dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  hbm2ddl:
+    auto: update
+  show:
+    sql: true
+  db:
+    schema: SALESMANAGER
+
+logging:
+  level:
+    com:
+      shopizer: INFO
+      zaxxer:
+        hikari:
+          HikariConfig: INFO
+    org:
+      apache:
+        http: ERROR
+      hibernate: ERROR
+      hibernate.SQL: ERROR
+      hibernate.type.descriptor.sql.BasicBinder: INFO
+      springframework: ERROR
+
+management:
+  endpoint:
+    health:
+      show-components: always
+      show-details: always
+  endpoints:
+    jmx:
+      exposure:
+        include: '*'
+    web:
+      exposure:
+        include: '*'
+  metrics:
+    tags:
+      application: ${spring.application.name}
+  health:
+    elasticsearch:
+      enabled: false
+    mail:
+      enabled: false
+    ping:
+      enabled: true

@@ -2,13 +2,13 @@ package com.salesmanager.shop.user.service;
 
 
 import com.salesmanager.shop.commons.entity.merchant.MerchantStore;
+import com.salesmanager.shop.commons.entity.user.User;
+import com.salesmanager.shop.commons.entity.user.UserCriteria;
 import com.salesmanager.shop.commons.exception.ServiceException;
 import com.salesmanager.shop.commons.model.entity.Criteria;
 import com.salesmanager.shop.commons.model.entity.GenericEntityList;
 import com.salesmanager.shop.commons.service.generic.SalesManagerEntityServiceImpl;
 import com.salesmanager.shop.commons.service.merchant.MerchantStoreService;
-import com.salesmanager.shop.user.entity.User;
-import com.salesmanager.shop.user.entity.UserCriteria;
 import com.salesmanager.shop.user.reposistory.PageableUserRepository;
 import com.salesmanager.shop.user.reposistory.UserRepository;
 import org.apache.commons.lang3.StringUtils;
@@ -16,11 +16,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import javax.inject.Inject;
 import java.util.List;
 
+@Service
 public class UserServiceImpl extends SalesManagerEntityServiceImpl<Long, User> implements UserService {
 
     private UserRepository userRepository;

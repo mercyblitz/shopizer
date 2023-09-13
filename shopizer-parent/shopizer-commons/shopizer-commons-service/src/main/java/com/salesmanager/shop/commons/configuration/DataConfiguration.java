@@ -21,7 +21,6 @@ public class DataConfiguration {
     /**
      * Other connection properties
      */
-
     @Value("${hibernate.hbm2ddl.auto}")
     private String hbm2ddl;
 

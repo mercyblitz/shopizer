@@ -10,7 +10,7 @@ import com.salesmanager.shop.commons.entity.reference.language.Language;
 import com.salesmanager.shop.commons.entity.common.audit.AuditSection;
 import com.salesmanager.shop.commons.util.DateUtil;
 import com.salesmanager.shop.store.facade.StoreFacade;
-import com.salesmanager.shop.store.model.ReadableMerchantStore;
+import com.salesmanager.shop.commons.model.store.ReadableMerchantStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;

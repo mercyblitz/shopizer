@@ -2,7 +2,7 @@ package com.salesmanager.shop.catalog.model;
 
 
 import com.salesmanager.shop.category.model.ReadableCategory;
-import com.salesmanager.shop.store.model.ReadableMerchantStore;
+import com.salesmanager.shop.commons.model.store.ReadableMerchantStore;
 
 import java.util.ArrayList;
 import java.util.List;

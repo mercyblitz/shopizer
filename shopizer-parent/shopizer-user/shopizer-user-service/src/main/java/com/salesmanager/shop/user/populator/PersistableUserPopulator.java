@@ -3,13 +3,13 @@ package com.salesmanager.shop.user.populator;
 
 import com.salesmanager.shop.commons.entity.merchant.MerchantStore;
 import com.salesmanager.shop.commons.entity.reference.language.Language;
+import com.salesmanager.shop.commons.entity.user.Group;
+import com.salesmanager.shop.commons.entity.user.User;
 import com.salesmanager.shop.commons.exception.ConversionException;
 import com.salesmanager.shop.commons.exception.ServiceException;
 import com.salesmanager.shop.commons.service.language.LanguageService;
 import com.salesmanager.shop.commons.service.merchant.MerchantStoreService;
 import com.salesmanager.shop.commons.util.AbstractDataPopulator;
-import com.salesmanager.shop.user.entity.Group;
-import com.salesmanager.shop.user.entity.User;
 import com.salesmanager.shop.user.model.PersistableGroup;
 import com.salesmanager.shop.user.model.PersistableUser;
 import com.salesmanager.shop.user.service.GroupService;

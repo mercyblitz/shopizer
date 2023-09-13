@@ -1,9 +1,9 @@
 package com.salesmanager.shop.user.service;
 
+import com.salesmanager.shop.commons.entity.user.Group;
+import com.salesmanager.shop.commons.entity.user.GroupType;
 import com.salesmanager.shop.commons.exception.ServiceException;
 import com.salesmanager.shop.commons.service.generic.SalesManagerEntityServiceImpl;
-import com.salesmanager.shop.user.entity.Group;
-import com.salesmanager.shop.user.entity.GroupType;
 import com.salesmanager.shop.user.reposistory.GroupRepository;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
 package com.salesmanager.shop.user.reposistory;
 
-import com.salesmanager.shop.user.entity.User;
+import com.salesmanager.shop.commons.entity.user.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;

@@ -1,12 +1,12 @@
 package com.salesmanager.shop.user.service;
 
 import com.salesmanager.shop.commons.entity.merchant.MerchantStore;
+import com.salesmanager.shop.commons.entity.user.User;
+import com.salesmanager.shop.commons.entity.user.UserCriteria;
 import com.salesmanager.shop.commons.exception.ServiceException;
 import com.salesmanager.shop.commons.model.entity.Criteria;
 import com.salesmanager.shop.commons.model.entity.GenericEntityList;
 import com.salesmanager.shop.commons.service.generic.SalesManagerEntityService;
-import com.salesmanager.shop.user.entity.User;
-import com.salesmanager.shop.user.entity.UserCriteria;
 import org.springframework.data.domain.Page;
 
 import java.util.List;

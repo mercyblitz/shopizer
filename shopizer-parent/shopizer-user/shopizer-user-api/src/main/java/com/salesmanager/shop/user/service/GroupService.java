@@ -1,9 +1,9 @@
 package com.salesmanager.shop.user.service;
 
+import com.salesmanager.shop.commons.entity.user.Group;
+import com.salesmanager.shop.commons.entity.user.GroupType;
 import com.salesmanager.shop.commons.exception.ServiceException;
 import com.salesmanager.shop.commons.service.generic.SalesManagerEntityService;
-import com.salesmanager.shop.user.entity.Group;
-import com.salesmanager.shop.user.entity.GroupType;
 
 import java.util.List;
 import java.util.Set;

@@ -5,6 +5,7 @@ import com.salesmanager.shop.commons.entity.common.audit.AuditSection;
 import com.salesmanager.shop.commons.entity.common.audit.Auditable;
 import com.salesmanager.shop.commons.entity.generic.SalesManagerEntity;
 import com.salesmanager.shop.commons.entity.merchant.MerchantStore;
+import com.salesmanager.shop.commons.enums.MerchantConfigurationType;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;

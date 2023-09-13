@@ -1,10 +1,10 @@
 package com.salesmanager.shop.user.facade;
 
+import com.salesmanager.shop.commons.entity.user.Group;
+import com.salesmanager.shop.commons.entity.user.PermissionCriteria;
+import com.salesmanager.shop.commons.entity.user.PermissionList;
 import com.salesmanager.shop.commons.exception.ServiceException;
 import com.salesmanager.shop.commons.exception.ServiceRuntimeException;
-import com.salesmanager.shop.user.entity.Group;
-import com.salesmanager.shop.user.entity.PermissionCriteria;
-import com.salesmanager.shop.user.entity.PermissionList;
 import com.salesmanager.shop.user.model.ReadablePermission;
 import com.salesmanager.shop.user.service.GroupService;
 import com.salesmanager.shop.user.service.PermissionService;

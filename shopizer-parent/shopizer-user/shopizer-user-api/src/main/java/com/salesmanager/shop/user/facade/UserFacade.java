@@ -3,8 +3,8 @@ package com.salesmanager.shop.user.facade;
 
 import com.salesmanager.shop.commons.entity.merchant.MerchantStore;
 import com.salesmanager.shop.commons.entity.reference.language.Language;
+import com.salesmanager.shop.commons.entity.user.UserCriteria;
 import com.salesmanager.shop.commons.model.entity.Criteria;
-import com.salesmanager.shop.user.entity.UserCriteria;
 import com.salesmanager.shop.user.model.PersistableUser;
 import com.salesmanager.shop.user.model.ReadablePermission;
 import com.salesmanager.shop.user.model.ReadableUser;

@@ -2,7 +2,7 @@ package com.salesmanager.shop.product.entity.relationship;
 
 import com.salesmanager.core.model.catalog.product.Product;
 import com.salesmanager.core.model.generic.SalesManagerEntity;
-import com.salesmanager.core.model.merchant.MerchantStore;
+import com.salesmanager.shop.commons.entity.merchant.MerchantStore;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

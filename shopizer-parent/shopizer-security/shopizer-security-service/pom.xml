@@ -15,12 +15,6 @@
 
     <dependencies>
 
-        <!-- Java Common Annotations -->
-        <dependency>
-            <groupId>javax.annotation</groupId>
-            <artifactId>javax.annotation-api</artifactId>
-        </dependency>
-
         <!-- Shopizer -->
         <dependency>
             <groupId>com.shopizer</groupId>
@@ -33,6 +27,12 @@
             <groupId>com.shopizer</groupId>
             <artifactId>shopizer-commons-service</artifactId>
             <version>${project.version}</version>
+        </dependency>
+
+        <!-- Java Common Annotations -->
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
         </dependency>
 
         <!-- Java Persistence API -->
@@ -160,6 +160,11 @@
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-stub</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
         <!-- Testing -->
