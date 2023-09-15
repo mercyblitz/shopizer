@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.event.EventListener;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -48,6 +49,7 @@ import static org.springframework.http.MediaType.IMAGE_PNG;
         "classpath:/spring/shopizer-core-config.xml",
         "classpath:/spring/shopizer-core-ehcache.xml",
 })
+@PropertySource("classpath:/shopizer-core.properties")
 public class ShopApplicationConfiguration implements WebMvcConfigurer {
 
     protected final Log logger = LogFactory.getLog(getClass());
