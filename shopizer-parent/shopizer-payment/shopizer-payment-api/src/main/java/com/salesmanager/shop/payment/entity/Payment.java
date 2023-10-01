@@ -1,7 +1,7 @@
 package com.salesmanager.shop.payment.entity;
 
 
-import com.salesmanager.shop.commons.entity.currency.Currency;
+import com.salesmanager.shop.commons.entity.reference.currency.Currency;
 
 import java.math.BigDecimal;
 import java.util.Map;

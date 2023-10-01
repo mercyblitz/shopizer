@@ -1,6 +1,7 @@
 package com.salesmanager.shop.content.model;
 
-import com.salesmanager.shop.model.entity.Entity;
+
+import com.salesmanager.shop.commons.model.entity.Entity;
 
 @Deprecated
 public class ContentEntity extends Entity {

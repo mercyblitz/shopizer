@@ -1,33 +1,17 @@
 package com.salesmanager.shop.payment.entity;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.salesmanager.shop.commons.entity.generic.SalesManagerEntity;
 import com.salesmanager.shop.commons.entity.common.audit.AuditListener;
 import com.salesmanager.shop.commons.entity.common.audit.AuditSection;
 import com.salesmanager.shop.commons.entity.common.audit.Auditable;
-import com.salesmanager.shop.order.entity.Order;
+import com.salesmanager.shop.commons.entity.generic.SalesManagerEntity;
+import com.salesmanager.shop.commons.entity.order.Order;
 import org.hibernate.annotations.Type;
 import org.json.simple.JSONAware;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.TableGenerator;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;

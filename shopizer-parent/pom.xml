@@ -20,7 +20,6 @@
         <module>shopizer-customer</module>
         <module>shopizer-tax</module>
         <module>shopizer-category</module>
-        <module>shopizer-catalog</module>
         <module>shopizer-product</module>
         <module>shopizer-order</module>
         <module>shopizer-payment</module>

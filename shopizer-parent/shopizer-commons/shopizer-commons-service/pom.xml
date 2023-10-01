@@ -112,6 +112,12 @@
             <version>1.6.0</version>
         </dependency>
 
+        <!-- Freemarker -->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+        </dependency>
+
         <!-- HTTP Components -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
