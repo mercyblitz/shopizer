@@ -2,15 +2,9 @@ package com.salesmanager.shop.customer.entity.attribute;
 
 
 import com.salesmanager.shop.commons.constants.SchemaConstant;
-import com.salesmanager.shop.commons.model.description.Description;
+import com.salesmanager.shop.commons.entity.common.description.Description;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.TableGenerator;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 
 @Entity
 @Table(name="CUSTOMER_OPTION_DESC", uniqueConstraints={
