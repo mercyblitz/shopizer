@@ -1,21 +1,10 @@
 package com.salesmanager.shop.product.entity.image;
 
-import com.salesmanager.core.model.catalog.product.Product;
-import com.salesmanager.core.model.generic.SalesManagerEntity;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.TableGenerator;
-import javax.persistence.Transient;
+import com.salesmanager.shop.commons.entity.generic.SalesManagerEntity;
+import com.salesmanager.shop.product.entity.Product;
+
+import javax.persistence.*;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;

@@ -1,49 +1,27 @@
 package com.salesmanager.shop.product.entity.customer;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.salesmanager.shop.commons.entity.generic.SalesManagerEntity;
-import com.salesmanager.shop.commons.entity.language.Language;
-import com.salesmanager.shop.commons.entity.merchant.MerchantStore;
-import com.salesmanager.shop.commons.model.Billing;
-import com.salesmanager.shop.commons.model.CredentialsReset;
-import com.salesmanager.shop.commons.model.Delivery;
+import com.salesmanager.shop.commons.entity.common.Billing;
+import com.salesmanager.shop.commons.entity.common.CredentialsReset;
+import com.salesmanager.shop.commons.entity.common.Delivery;
 import com.salesmanager.shop.commons.entity.common.audit.AuditSection;
 import com.salesmanager.shop.commons.entity.common.audit.Auditable;
+import com.salesmanager.shop.commons.entity.customer.CustomerGender;
+import com.salesmanager.shop.commons.entity.customer.attribute.CustomerAttribute;
+import com.salesmanager.shop.commons.entity.generic.SalesManagerEntity;
+import com.salesmanager.shop.commons.entity.merchant.MerchantStore;
+import com.salesmanager.shop.commons.entity.reference.language.Language;
+import com.salesmanager.shop.commons.entity.user.Group;
 import com.salesmanager.shop.commons.util.CloneUtils;
 import com.salesmanager.shop.product.entity.review.ProductReview;
-import com.salesmanager.shop.user.entity.Group;
 import org.hibernate.annotations.Cascade;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.TableGenerator;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Transient;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "CUSTOMER", 

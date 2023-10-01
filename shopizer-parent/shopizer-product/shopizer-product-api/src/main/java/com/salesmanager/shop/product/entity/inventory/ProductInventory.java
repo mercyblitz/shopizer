@@ -1,6 +1,7 @@
 package com.salesmanager.shop.product.entity.inventory;
 
-import com.salesmanager.core.model.catalog.product.price.FinalPrice;
+
+import com.salesmanager.shop.product.entity.price.FinalPrice;
 
 import java.io.Serializable;
 

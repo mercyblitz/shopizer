@@ -1,16 +1,9 @@
 package com.salesmanager.shop.product.entity.price;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.salesmanager.core.constants.SchemaConstant;
-import com.salesmanager.core.model.common.description.Description;
+import com.salesmanager.shop.commons.entity.common.description.Description;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.TableGenerator;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "PRODUCT_PRICE_DESCRIPTION",
