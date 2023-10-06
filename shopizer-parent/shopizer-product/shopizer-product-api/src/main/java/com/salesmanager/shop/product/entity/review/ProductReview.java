@@ -1,10 +1,10 @@
 package com.salesmanager.shop.product.entity.review;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.salesmanager.shop.commons.entity.generic.SalesManagerEntity;
 import com.salesmanager.shop.commons.entity.common.audit.AuditListener;
 import com.salesmanager.shop.commons.entity.common.audit.AuditSection;
 import com.salesmanager.shop.commons.entity.common.audit.Auditable;
+import com.salesmanager.shop.commons.entity.generic.SalesManagerEntity;
 import com.salesmanager.shop.product.entity.Product;
 import com.salesmanager.shop.product.entity.customer.Customer;
 

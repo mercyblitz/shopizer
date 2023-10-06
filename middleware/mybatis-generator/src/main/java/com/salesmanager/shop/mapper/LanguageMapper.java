@@ -2,8 +2,9 @@ package com.salesmanager.shop.mapper;
 
 import com.salesmanager.shop.entity.Language;
 import com.salesmanager.shop.entity.LanguageExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface LanguageMapper {
     /**

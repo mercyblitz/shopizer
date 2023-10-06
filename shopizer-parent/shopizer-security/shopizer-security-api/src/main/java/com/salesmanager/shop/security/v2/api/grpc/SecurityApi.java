@@ -18,11 +18,7 @@
     package com.salesmanager.shop.security.v2.api.grpc;
 
 import org.apache.dubbo.common.stream.StreamObserver;
-import com.google.protobuf.Message;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.BiConsumer;
 import java.util.concurrent.CompletableFuture;
 
 public interface SecurityApi {

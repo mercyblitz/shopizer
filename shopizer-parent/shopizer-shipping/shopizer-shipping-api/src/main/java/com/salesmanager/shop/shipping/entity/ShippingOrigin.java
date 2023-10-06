@@ -1,9 +1,9 @@
 package com.salesmanager.shop.shipping.entity;
 
 
-import com.salesmanager.shop.commons.entity.reference.country.Country;
 import com.salesmanager.shop.commons.entity.generic.SalesManagerEntity;
 import com.salesmanager.shop.commons.entity.merchant.MerchantStore;
+import com.salesmanager.shop.commons.entity.reference.country.Country;
 import com.salesmanager.shop.commons.entity.reference.zone.Zone;
 
 import javax.persistence.Column;

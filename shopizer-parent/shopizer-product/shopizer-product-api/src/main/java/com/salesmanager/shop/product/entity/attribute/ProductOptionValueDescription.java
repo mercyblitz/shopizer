@@ -4,7 +4,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.salesmanager.shop.commons.constants.SchemaConstant;
 import com.salesmanager.shop.commons.entity.common.description.Description;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.TableGenerator;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "PRODUCT_OPTION_VALUE_DESCRIPTION", uniqueConstraints = {

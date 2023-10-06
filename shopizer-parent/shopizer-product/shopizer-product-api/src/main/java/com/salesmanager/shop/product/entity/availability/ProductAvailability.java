@@ -2,10 +2,10 @@ package com.salesmanager.shop.product.entity.availability;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.salesmanager.shop.commons.constants.SchemaConstant;
-import com.salesmanager.shop.commons.entity.generic.SalesManagerEntity;
-import com.salesmanager.shop.commons.entity.merchant.MerchantStore;
 import com.salesmanager.shop.commons.entity.common.audit.AuditSection;
 import com.salesmanager.shop.commons.entity.common.audit.Auditable;
+import com.salesmanager.shop.commons.entity.generic.SalesManagerEntity;
+import com.salesmanager.shop.commons.entity.merchant.MerchantStore;
 import com.salesmanager.shop.commons.util.CloneUtils;
 import com.salesmanager.shop.product.entity.Product;
 import com.salesmanager.shop.product.entity.ProductDimensions;

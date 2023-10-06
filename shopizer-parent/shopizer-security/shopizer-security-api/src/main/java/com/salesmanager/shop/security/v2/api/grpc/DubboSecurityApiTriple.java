@@ -17,8 +17,9 @@
 
     package com.salesmanager.shop.security.v2.api.grpc;
 
-import org.apache.dubbo.common.stream.StreamObserver;
+import com.google.protobuf.Message;
 import org.apache.dubbo.common.URL;
+import org.apache.dubbo.common.stream.StreamObserver;
 import org.apache.dubbo.rpc.Invoker;
 import org.apache.dubbo.rpc.PathResolver;
 import org.apache.dubbo.rpc.RpcException;
@@ -28,20 +29,16 @@ import org.apache.dubbo.rpc.model.MethodDescriptor;
 import org.apache.dubbo.rpc.model.ServiceDescriptor;
 import org.apache.dubbo.rpc.model.StubMethodDescriptor;
 import org.apache.dubbo.rpc.model.StubServiceDescriptor;
-import org.apache.dubbo.rpc.stub.BiStreamMethodHandler;
-import org.apache.dubbo.rpc.stub.ServerStreamMethodHandler;
 import org.apache.dubbo.rpc.stub.StubInvocationUtil;
 import org.apache.dubbo.rpc.stub.StubInvoker;
 import org.apache.dubbo.rpc.stub.StubMethodHandler;
 import org.apache.dubbo.rpc.stub.StubSuppliers;
 import org.apache.dubbo.rpc.stub.UnaryStubMethodHandler;
 
-import com.google.protobuf.Message;
-
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.BiConsumer;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.BiConsumer;
 
 public final class DubboSecurityApiTriple {
 

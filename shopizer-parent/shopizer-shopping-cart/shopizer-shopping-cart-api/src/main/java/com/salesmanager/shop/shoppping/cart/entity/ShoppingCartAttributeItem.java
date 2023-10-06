@@ -1,10 +1,10 @@
 package com.salesmanager.shop.shoppping.cart.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.salesmanager.shop.commons.entity.generic.SalesManagerEntity;
 import com.salesmanager.shop.commons.entity.common.audit.AuditListener;
 import com.salesmanager.shop.commons.entity.common.audit.AuditSection;
 import com.salesmanager.shop.commons.entity.common.audit.Auditable;
+import com.salesmanager.shop.commons.entity.generic.SalesManagerEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
