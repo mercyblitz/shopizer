@@ -18,6 +18,8 @@ package com.salesmanager.shop.security;
 
 import io.microsphere.spring.webmvc.annotation.EnableWebMvcExtension;
 import io.microsphere.spring.webmvc.handler.ReversedProxyHandlerMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.actuate.autoconfigure.security.servlet.ManagementWebSecurityAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,6 +28,8 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
@@ -34,6 +38,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since 1.0.0
  */
+@EnableScheduling
 @EnableWebMvcExtension
 @EnableDiscoveryClient
 @EnableJpaRepositories(basePackages = "com.salesmanager.shop")
@@ -45,6 +50,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 )
 @Import(ReversedProxyHandlerMapping.class)
 public class ShopizerSecurityBootstrap {
+
+    private static final Logger logger = LoggerFactory.getLogger(ShopizerSecurityBootstrap.class);
 
     public static void main(String[] args) {
         SpringApplication.run(ShopizerSecurityBootstrap.class, args);
@@ -60,4 +67,9 @@ public class ShopizerSecurityBootstrap {
 //    public void init() {
 //        meterRegistry.config().commonTags("application", applicationName);
 //    }
+
+    @Scheduled(fixedRate = 5000)
+    public void log() {
+        logger.info("Living...");
+    }
 }

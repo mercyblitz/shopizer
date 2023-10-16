@@ -1,0 +1,36 @@
+<configuration>
+    <springProfile name="default">
+        <!-- configuration to be enabled when the "staging" profile is active -->
+        <springProperty scope="context" name="module" source="spring.application.name" />
+
+        <springProperty scope="context" name="bootstrapServers" source="spring.kafka.bootstrap-servers"
+                        defaultValue="127.0.0.1:9092" />
+
+        <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>%boldYellow(${module}) | %d | %highlight(%-5level)| %cyan(%logger{15}) - %msg %n</pattern>
+            </encoder>
+        </appender>
+
+        <!-- KafkaAppender  -->
+        <appender name="kafka-appender" class="com.github.danielwegener.logback.kafka.KafkaAppender">
+            <encoder>
+                <pattern>${module} | %d | %-5level| %logger{15} - %msg</pattern>
+            </encoder>
+            <topic>kafka-logging-channel</topic>
+            <keyingStrategy class="com.github.danielwegener.logback.kafka.keying.NoKeyKeyingStrategy"/>
+            <deliveryStrategy class="com.github.danielwegener.logback.kafka.delivery.AsynchronousDeliveryStrategy"/>
+            <producerConfig>bootstrap.servers=${bootstrapServers}</producerConfig>
+            <appender-ref ref="STDOUT"/>
+        </appender>
+
+        <!-- 指定项目中的logger -->
+        <logger name="com.salesmanager" level="INFO" >
+            <appender-ref ref="kafka-appender" />
+        </logger>
+
+        <root level="INFO">
+            <appender-ref ref="STDOUT" />
+        </root>
+    </springProfile>
+</configuration>
