@@ -122,6 +122,11 @@
             <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient_pushgateway</artifactId>
+        </dependency>
+
         <!-- Spring Cloud Alibaba - Sentinel -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>

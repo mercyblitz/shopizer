@@ -107,6 +107,14 @@ management:
   metrics:
     tags:
       application: ${spring.application.name}
+    export:
+      prometheus:
+        enabled: true
+        pushgateway:
+          enabled: true
+          base-url: http://localhost:8428/api/v1/import/prometheus/
+          push-rate: 10s
+
   health:
     elasticsearch:
       enabled: false
